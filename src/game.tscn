@@ -1,12 +1,89 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=9 format=3 uid="uid://b6rl31un1lcjf"]
 
+[ext_resource type="Script" path="res://player.gd" id="1_5y1ty"]
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://ui/inventory_control.tscn" id="1_e5p4f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a4sl5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ypov8"]
+sky_material = SubResource("ProceduralSkyMaterial_a4sl5")
+
+[sub_resource type="Environment" id="Environment_cpbav"]
+background_mode = 2
+sky = SubResource("Sky_ypov8")
+tonemap_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_688nc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fm8i8"]
 
 [node name="Game" type="Node"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cpbav")
+
 [node name="World3D" type="Node3D" parent="."]
 
+[node name="Living Lift" type="Node3D" parent="World3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Living Lift"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1)
+mesh = SubResource("QuadMesh_688nc")
+
+[node name="Level" type="Node3D" parent="World3D"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World3D/Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_688nc")
+skeleton = NodePath("../../Living Lift")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="World3D/Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1)
+mesh = SubResource("QuadMesh_688nc")
+skeleton = NodePath("../../Living Lift")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="World3D/Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0, -1)
+mesh = SubResource("QuadMesh_688nc")
+skeleton = NodePath("../../Living Lift")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="World3D/Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 0, 0)
+mesh = SubResource("QuadMesh_688nc")
+skeleton = NodePath("../../Living Lift")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="World3D/Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 0, 0)
+mesh = SubResource("QuadMesh_688nc")
+skeleton = NodePath("../../Living Lift")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="World3D/Level"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1, 0, -1)
+mesh = SubResource("QuadMesh_688nc")
+skeleton = NodePath("../../Living Lift")
+
+[node name="Player" type="CharacterBody3D" parent="World3D" node_paths=PackedStringArray("camera")]
+script = ExtResource("1_5y1ty")
+camera = NodePath("../../Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World3D/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mrw3v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_fm8i8")
+
 [node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2, 2)
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
