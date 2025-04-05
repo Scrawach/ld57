@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsvuyf2ey8a4h"]
+[gd_scene load_steps=9 format=3 uid="uid://dsvuyf2ey8a4h"]
 
 [ext_resource type="Script" path="res://living_lift/dialogue_panel.gd" id="1_3i4c8"]
 [ext_resource type="PackedScene" uid="uid://c0crlqansv3uu" path="res://living_lift/reactive_bar.tscn" id="2_2quvk"]
@@ -20,6 +20,13 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n462f"]
+bg_color = Color(0.2268, 0.52318, 0.84, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f6byu"]
 
@@ -80,6 +87,9 @@ layout_mode = 2
 [node name="Hunger Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_2quvk")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="ProgressBar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Hunger Bar/MarginContainer" index="0"]
+theme_override_styles/fill = SubResource("StyleBoxFlat_n462f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.5158, 0, -3.55271e-15, 0, 1.00632, 0, 0, 0, 1.33337, 0, 0, 0)
