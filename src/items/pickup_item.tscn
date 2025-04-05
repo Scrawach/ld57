@@ -7,9 +7,10 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_jisn5"]
 
-[node name="Pickup Item" type="StaticBody3D"]
+[node name="Pickup Item" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 3
+monitoring = false
 script = ExtResource("1_26yid")
 item = ExtResource("2_ow3kl")
 

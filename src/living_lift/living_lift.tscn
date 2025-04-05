@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://6cthiya7h8jg"]
+[gd_scene load_steps=7 format=3 uid="uid://6cthiya7h8jg"]
 
 [ext_resource type="Script" path="res://living_lift.gd" id="1_p8bgj"]
 [ext_resource type="Resource" uid="uid://bxcg8onw2rbii" path="res://living_lift/lift_resource.tres" id="2_cjspu"]
 [ext_resource type="PackedScene" uid="uid://dsvuyf2ey8a4h" path="res://dialogue_panel.tscn" id="3_uugx3"]
+[ext_resource type="Script" path="res://living_lift/eat_zone.gd" id="4_5xp8e"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_688nc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c5uqo"]
 
 [node name="Living Lift" type="Node3D"]
 script = ExtResource("1_p8bgj")
@@ -17,3 +20,19 @@ mesh = SubResource("QuadMesh_688nc")
 [node name="Dialogue Panel" parent="." instance=ExtResource("3_uugx3")]
 unique_name_in_owner = true
 transform = Transform3D(3.55271e-15, 1, 1.55294e-22, 4.37114e-08, 0, -1, -1, 0, -4.37114e-08, -4, 2, 3)
+
+[node name="Eat Zone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+collision_layer = 3
+monitoring = false
+script = ExtResource("4_5xp8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Eat Zone"]
+shape = SubResource("BoxShape3D_c5uqo")
+
+[node name="Label3D" type="Label3D" parent="Eat Zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+text = "EAT"
+font_size = 100

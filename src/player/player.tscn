@@ -63,5 +63,5 @@ font_size = 100
 script = ExtResource("4_2t717")
 stamina = NodePath("../Stamina")
 
-[connection signal="body_entered" from="Interact Zone" to="." method="_on_interact_zone_body_entered"]
-[connection signal="body_exited" from="Interact Zone" to="." method="_on_interact_zone_body_exited"]
+[connection signal="area_entered" from="Interact Zone" to="." method="_on_interact_zone_area_entered"]
+[connection signal="area_exited" from="Interact Zone" to="." method="_on_interact_zone_area_exited"]

@@ -25,7 +25,6 @@ func _on_inventory_updated() -> void:
 			instance.construct(inventory.items[index])
 		
 		if index == selected_index:
-			print(selected_index)
 			instance.select()
 
 func _on_inventory_item_selected(item_index: int) -> void:

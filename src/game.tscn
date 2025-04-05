@@ -54,7 +54,7 @@ waypoints = [NodePath("../Way Points/Marker3D"), NodePath("../Way Points/Marker3
 [node name="Way Points" type="Node3D" parent="World3D/Level"]
 
 [node name="Marker3D" type="Marker3D" parent="World3D/Level/Way Points"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00783, -0.985506, -2.00227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63781, -0.985506, -0.701387)
 gizmo_extents = 1.0
 
 [node name="Marker3D2" type="Marker3D" parent="World3D/Level/Way Points"]

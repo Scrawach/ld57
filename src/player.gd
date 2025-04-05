@@ -47,7 +47,7 @@ func get_movement_input(relative: Node3D) -> Vector3:
 	return input.normalized()
 
 func _interaction_process(delta: float) -> void:
-	if nearest_interaction != null and Input.is_action_pressed("interact"):
+	if nearest_interaction != null and Input.is_action_just_pressed("interact"):
 		nearest_interaction.interact(self)
 	
 	for item_index in inventory.size:
@@ -56,15 +56,16 @@ func _interaction_process(delta: float) -> void:
 		if is_pressed:
 			inventory.select(item_index)
 
-func _on_interact_zone_body_entered(body: Node3D) -> void:
-	if body is Interaction:
+func _on_interact_zone_area_entered(area: Area3D) -> void:
+	if area is Interaction:
 		if nearest_interaction != null:
-			nearest_interaction.hide_tooltip()
+			nearest_interaction.hide_tooltip(self)
 		
-		nearest_interaction = body
-		nearest_interaction.show_tooltip()
+		nearest_interaction = area
+		nearest_interaction.show_tooltip(self)
 
-func _on_interact_zone_body_exited(body: Node3D) -> void:
-	if nearest_interaction == body:
-		nearest_interaction.hide_tooltip()
+
+func _on_interact_zone_area_exited(area: Area3D) -> void:
+	if nearest_interaction == area:
+		nearest_interaction.hide_tooltip(self)
 		nearest_interaction = null
