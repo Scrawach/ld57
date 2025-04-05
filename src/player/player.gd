@@ -11,6 +11,7 @@ const DASH_STAMINA_REQUIRED: int = 1
 @onready var inventory: Inventory = $Inventory
 @onready var stamina: Stamina = %Stamina
 
+var direction: float
 var nearest_interaction: Interaction
 
 func _physics_process(delta: float) -> void:
@@ -31,10 +32,8 @@ func _movement_process(delta: float) -> void:
 	velocity = target_velocity
 	move_and_slide()
 
-func _rotation_process(delta: float) -> void:
-	var direction: float
-	
-	if Vector2(velocity.z, velocity.x).length() > 0:
+func _rotation_process(delta: float) -> void:	
+	if not Vector2(velocity.z, velocity.x).is_zero_approx():
 		direction = Vector2(velocity.z, velocity.x).angle()
 
 	rotation.y = lerp_angle(rotation.y, direction, delta * 10)
