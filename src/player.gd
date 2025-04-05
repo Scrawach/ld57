@@ -16,6 +16,7 @@ var nearest_interaction: Interaction
 func _physics_process(delta: float) -> void:
 	_interaction_process(delta)
 	_movement_process(delta)
+	_rotation_process(delta)
 
 func _movement_process(delta: float) -> void:
 	var speed = movement_speed
@@ -30,6 +31,14 @@ func _movement_process(delta: float) -> void:
 	velocity = target_velocity
 	move_and_slide()
 
+func _rotation_process(delta: float) -> void:
+	var direction: float
+	
+	if Vector2(velocity.z, velocity.x).length() > 0:
+		direction = Vector2(velocity.z, velocity.x).angle()
+
+	rotation.y = lerp_angle(rotation.y, direction, delta * 10)
+	
 func get_movement_input(relative: Node3D) -> Vector3:
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")

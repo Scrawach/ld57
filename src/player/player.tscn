@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlo08xmlhe8sf"]
+[gd_scene load_steps=9 format=3 uid="uid://dlo08xmlhe8sf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ydiw7"]
 [ext_resource type="Script" path="res://inventory.gd" id="2_e6sf5"]
@@ -9,11 +9,13 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_fm8i8"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_pyvwc"]
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_d36ok"]
 radius = 2.0
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+collision_layer = 5
 script = ExtResource("1_ydiw7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -23,6 +25,10 @@ shape = SubResource("CapsuleShape3D_mrw3v")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_fm8i8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.778055, 0, 0, 0, 0.335436, 0, 0, 0, 0.500199, 0, 0.495081, 0.361226)
+mesh = SubResource("BoxMesh_pyvwc")
 
 [node name="Interact Zone" type="Area3D" parent="."]
 collision_layer = 2
@@ -43,11 +49,14 @@ max = 100
 
 [node name="Recovery Timer" type="Timer" parent="Stamina"]
 wait_time = 0.2
+one_shot = true
 
 [node name="Consume Awaiting" type="Timer" parent="Stamina"]
+one_shot = true
 
 [node name="Label3D" type="Label3D" parent="." node_paths=PackedStringArray("stamina")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00903749, 2.63169, 0.00244689)
+billboard = 1
 text = "100
 "
 font_size = 100
