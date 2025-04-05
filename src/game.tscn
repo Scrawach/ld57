@@ -135,9 +135,11 @@ get_offset_on_ready = true
 [node name="Inventory Control" parent="Canvas" node_paths=PackedStringArray("inventory") instance=ExtResource("1_e5p4f")]
 inventory = NodePath("../../World3D/Player/Inventory")
 
-[node name="Startup Scenario" type="Node" parent="." node_paths=PackedStringArray("dialogue_panel")]
+[node name="Scenarios" type="Node" parent="."]
+
+[node name="Startup Scenario" type="Node" parent="Scenarios" node_paths=PackedStringArray("dialogue_panel")]
 script = ExtResource("8_5hj0e")
-dialogue_panel = NodePath("../World3D/Living Lift/Dialogue Panel")
+dialogue_panel = NodePath("../../World3D/Living Lift/Dialogue Panel")
 
 [connection signal="body_entered" from="World3D/Player/Interact Zone" to="World3D/Player" method="_on_interact_zone_body_entered"]
 [connection signal="body_exited" from="World3D/Player/Interact Zone" to="World3D/Player" method="_on_interact_zone_body_exited"]

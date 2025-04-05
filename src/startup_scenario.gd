@@ -11,6 +11,7 @@ func start() -> void:
 		dialogue_panel.show_text(item)
 		await get_tree().create_timer(timer_delay).timeout
 	dialogue_panel.show_text("")
+	dialogue_panel.status.show()
 
 func get_startup_panel_text() -> Array[String]:
 	return [
