@@ -1,7 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsvuyf2ey8a4h"]
+[gd_scene load_steps=8 format=3 uid="uid://dsvuyf2ey8a4h"]
 
 [ext_resource type="Script" path="res://dialogue_panel.gd" id="1_vyvw3"]
-[ext_resource type="Texture2D" uid="uid://boftn5dq57qp8" path="res://icon.svg" id="2_dctin"]
+[ext_resource type="PackedScene" uid="uid://c0crlqansv3uu" path="res://living_lift/reactive_bar.tscn" id="2_wg4kr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu5fg"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dt31n"]
+draw_center = false
+border_width_left = 30
+border_width_top = 30
+border_width_right = 30
+border_width_bottom = 30
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f6byu"]
 
@@ -10,6 +28,7 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yklmy"]
 resource_local_to_scene = true
+transparency = 4
 albedo_texture = SubResource("ViewportTexture_fy0be")
 
 [node name="Dialogue Panel" type="Node3D"]
@@ -18,24 +37,24 @@ script = ExtResource("1_vyvw3")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(1152, 512)
+size = Vector2i(1152, 648)
 
-[node name="Dialogue Panel" type="Control" parent="SubViewport"]
-layout_mode = 3
+[node name="Dialogue Panel" type="PanelContainer" parent="SubViewport"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu5fg")
+
+[node name="Border" type="Panel" parent="SubViewport/Dialogue Panel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dt31n")
 
 [node name="Label" type="Label" parent="SubViewport/Dialogue Panel"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+visible = false
+layout_mode = 2
 theme_override_font_sizes/font_size = 120
 text = "I. WANT. EAT."
 horizontal_alignment = 1
@@ -43,56 +62,29 @@ vertical_alignment = 1
 
 [node name="Status" type="MarginContainer" parent="SubViewport/Dialogue Panel"]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Dialogue Panel/Status"]
 layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="Health Bar" type="HBoxContainer" parent="SubViewport/Dialogue Panel/Status/VBoxContainer"]
+[node name="Health Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_wg4kr")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Health Bar"]
-custom_minimum_size = Vector2(160, 160)
+[node name="Hunger Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_wg4kr")]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_dctin")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Health Bar"]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="Hunger Bar" type="HBoxContainer" parent="SubViewport/Dialogue Panel/Status/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Hunger Bar"]
-custom_minimum_size = Vector2(160, 160)
-layout_mode = 2
-texture = ExtResource("2_dctin")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Hunger Bar"]
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(2.5158, 0, -3.55271e-15, 0, 1.00632, 0, 0, 0, 1.33337, 0, 0, 0)
 mesh = SubResource("PlaneMesh_f6byu")
 surface_material_override/0 = SubResource("StandardMaterial3D_yklmy")
+
+[editable path="SubViewport/Dialogue Panel/Status/VBoxContainer/Health Bar"]
+[editable path="SubViewport/Dialogue Panel/Status/VBoxContainer/Hunger Bar"]

@@ -1,20 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=15 format=3 uid="uid://b6rl31un1lcjf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5y1ty"]
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://ui/inventory_control.tscn" id="1_e5p4f"]
+[ext_resource type="PackedScene" uid="uid://6cthiya7h8jg" path="res://living_lift/living_lift.tscn" id="1_u2u37"]
 [ext_resource type="Script" path="res://pickup_item.gd" id="2_8qeaw"]
 [ext_resource type="Script" path="res://inventory.gd" id="2_byhf7"]
 [ext_resource type="Script" path="res://following_camera.gd" id="2_v2k5q"]
 [ext_resource type="Resource" uid="uid://ba73upbd31jon" path="res://item_base.tres" id="3_je24h"]
-[ext_resource type="PackedScene" uid="uid://dsvuyf2ey8a4h" path="res://dialogue_panel.tscn" id="7_gf32d"]
 [ext_resource type="Script" path="res://startup_scenario.gd" id="8_5hj0e"]
 
 [sub_resource type="Environment" id="Environment_cpbav"]
 background_mode = 1
 background_color = Color(0.151276, 0.151276, 0.151276, 1)
 tonemap_mode = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_688nc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
 
@@ -39,13 +37,7 @@ environment = SubResource("Environment_cpbav")
 
 [node name="World3D" type="Node3D" parent="."]
 
-[node name="Living Lift" type="Node3D" parent="World3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Living Lift"]
-transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 3)
-mesh = SubResource("QuadMesh_688nc")
-
-[node name="Dialogue Panel" parent="World3D/Living Lift" instance=ExtResource("7_gf32d")]
+[node name="Living Lift" parent="World3D" instance=ExtResource("1_u2u37")]
 
 [node name="Level" type="Node3D" parent="World3D"]
 
@@ -122,7 +114,7 @@ shape = SubResource("BoxShape3D_c8btv")
 mesh = SubResource("BoxMesh_jisn5")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(0.866025, -0.283548, 0.411826, 0, 0.823651, 0.567097, -0.5, -0.49112, 0.713303, 2, 4, 3)
+transform = Transform3D(0.866025, -0.283548, 0.411826, 0, 0.823651, 0.567097, -0.5, -0.49112, 0.713303, 6, 10, 11)
 projection = 1
 size = 10.0
 script = ExtResource("2_v2k5q")
@@ -143,3 +135,5 @@ dialogue_panel = NodePath("../../World3D/Living Lift/Dialogue Panel")
 
 [connection signal="body_entered" from="World3D/Player/Interact Zone" to="World3D/Player" method="_on_interact_zone_body_entered"]
 [connection signal="body_exited" from="World3D/Player/Interact Zone" to="World3D/Player" method="_on_interact_zone_body_exited"]
+
+[editable path="World3D/Living Lift"]
