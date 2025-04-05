@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://p2u2uglbag6q"]
+
+[ext_resource type="Script" path="res://ui/item_control.gd" id="1_4cxfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qktr"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvna5"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6qjt"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Item" type="PanelContainer"]
+clip_children = 1
+custom_minimum_size = Vector2(60, 60)
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qktr")
+script = ExtResource("1_4cxfs")
+select_border_color = Color(0.82, 0.7462, 0.3772, 1)
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvna5")
+
+[node name="Icon Rect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Border" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6qjt")

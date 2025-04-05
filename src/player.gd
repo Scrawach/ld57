@@ -4,6 +4,10 @@ extends CharacterBody3D
 @export var camera: Node3D
 @export var movement_speed: int = 250
 
+@onready var inventory: Inventory = $Inventory
+
+var nearest_interaction: Interaction
+
 func _physics_process(delta: float) -> void:
 	var movement = get_movement_input(camera) * movement_speed * delta
 	var target_velocity = velocity.lerp(movement, delta * 10)
@@ -16,3 +20,21 @@ func get_movement_input(relative: Node3D) -> Vector3:
 	input.z = Input.get_axis("move_forward", "move_back")
 	input = input.rotated(Vector3.UP, relative.rotation.y)
 	return input.normalized()
+
+func _process(delta: float) -> void:
+	if nearest_interaction != null and Input.is_action_pressed("interact"):
+		nearest_interaction.interact(self)
+	
+	for item_index in inventory.size:
+		var is_pressed: bool = Input.is_key_pressed(KEY_1 + item_index)
+		
+		if is_pressed:
+			inventory.select(item_index)
+
+func _on_interact_zone_body_entered(body: Node3D) -> void:
+	if body is Interaction:
+		nearest_interaction = body
+
+func _on_interact_zone_body_exited(body: Node3D) -> void:
+	if nearest_interaction == body:
+		nearest_interaction = null
