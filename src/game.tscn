@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=14 format=3 uid="uid://b6rl31un1lcjf"]
 
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://ui/inventory_control.tscn" id="1_e5p4f"]
 [ext_resource type="PackedScene" uid="uid://6cthiya7h8jg" path="res://living_lift/living_lift.tscn" id="1_u2u37"]
 [ext_resource type="Script" path="res://pickup_item.gd" id="2_8qeaw"]
+[ext_resource type="PackedScene" uid="uid://cu1sy3dij4mv2" path="res://monsters/monster.tscn" id="2_74s4o"]
 [ext_resource type="PackedScene" uid="uid://dlo08xmlhe8sf" path="res://player/player.tscn" id="2_tmo8h"]
 [ext_resource type="Script" path="res://following_camera.gd" id="2_v2k5q"]
 [ext_resource type="Resource" uid="uid://ba73upbd31jon" path="res://item_base.tres" id="3_je24h"]
@@ -12,6 +13,12 @@
 background_mode = 1
 background_color = Color(0.151276, 0.151276, 0.151276, 1)
 tonemap_mode = 2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_kve1j"]
+vertices = PackedVector3Array(-2, 0.5, -4, -2, 0.5, 0, 7, 0.5, 0, 7, 0.5, -4)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p70e8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c8btv"]
 
@@ -32,6 +39,30 @@ environment = SubResource("Environment_cpbav")
 [node name="Living Lift" parent="World3D" instance=ExtResource("1_u2u37")]
 
 [node name="Level" type="Node3D" parent="World3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World3D/Level"]
+navigation_mesh = SubResource("NavigationMesh_kve1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Level/NavigationRegion3D"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 0, 0, -2)
+mesh = SubResource("QuadMesh_p70e8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World3D/Level/NavigationRegion3D"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 5, 0, -2)
+mesh = SubResource("QuadMesh_p70e8")
+
+[node name="Monster" parent="World3D/Level" node_paths=PackedStringArray("waypoints") instance=ExtResource("2_74s4o")]
+waypoints = [NodePath("../Way Points/Marker3D"), NodePath("../Way Points/Marker3D2")]
+
+[node name="Way Points" type="Node3D" parent="World3D/Level"]
+
+[node name="Marker3D" type="Marker3D" parent="World3D/Level/Way Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00783, -0.985506, -2.00227)
+gizmo_extents = 1.0
+
+[node name="Marker3D2" type="Marker3D" parent="World3D/Level/Way Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -4)
+gizmo_extents = 3.35
 
 [node name="Player" parent="World3D" node_paths=PackedStringArray("camera") instance=ExtResource("2_tmo8h")]
 camera = NodePath("../../Camera3D")
