@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlo08xmlhe8sf"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ydiw7"]
+[ext_resource type="Script" path="res://inventory.gd" id="2_e6sf5"]
+[ext_resource type="Script" path="res://stamina.gd" id="3_dtf2r"]
+[ext_resource type="Script" path="res://player/stamina_control.gd" id="4_2t717"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fm8i8"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_d36ok"]
+radius = 2.0
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("1_ydiw7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_mrw3v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_fm8i8")
+
+[node name="Interact Zone" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Zone"]
+shape = SubResource("SphereShape3D_d36ok")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("2_e6sf5")
+size = 3
+
+[node name="Stamina" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_dtf2r")
+current = 100
+max = 100
+
+[node name="Recovery Timer" type="Timer" parent="Stamina"]
+wait_time = 0.2
+
+[node name="Consume Awaiting" type="Timer" parent="Stamina"]
+
+[node name="Label3D" type="Label3D" parent="." node_paths=PackedStringArray("stamina")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00903749, 2.63169, 0.00244689)
+text = "100
+"
+font_size = 100
+script = ExtResource("4_2t717")
+stamina = NodePath("../Stamina")
+
+[connection signal="body_entered" from="Interact Zone" to="." method="_on_interact_zone_body_entered"]
+[connection signal="body_exited" from="Interact Zone" to="." method="_on_interact_zone_body_exited"]
