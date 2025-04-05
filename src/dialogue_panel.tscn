@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsvuyf2ey8a4h"]
+
+[ext_resource type="Script" path="res://dialogue_panel.gd" id="1_vyvw3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f6byu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fy0be"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yklmy"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_fy0be")
+
+[node name="Dialogue Panel" type="Node3D"]
+transform = Transform3D(-3.09086e-08, 0.707107, 0.707107, 3.09086e-08, 0.707107, -0.707107, -1, 0, -4.37114e-08, -4, 2, 3)
+script = ExtResource("1_vyvw3")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1152, 512)
+
+[node name="Dialogue Panel" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/Dialogue Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "I. WANT. EAT."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_f6byu")
+surface_material_override/0 = SubResource("StandardMaterial3D_yklmy")

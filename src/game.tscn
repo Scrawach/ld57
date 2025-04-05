@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=16 format=3 uid="uid://b6rl31un1lcjf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5y1ty"]
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://ui/inventory_control.tscn" id="1_e5p4f"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://inventory.gd" id="2_byhf7"]
 [ext_resource type="Script" path="res://following_camera.gd" id="2_v2k5q"]
 [ext_resource type="Resource" uid="uid://ba73upbd31jon" path="res://item_base.tres" id="3_je24h"]
+[ext_resource type="PackedScene" uid="uid://dsvuyf2ey8a4h" path="res://dialogue_panel.tscn" id="7_gf32d"]
+[ext_resource type="Script" path="res://startup_scenario.gd" id="8_5hj0e"]
 
 [sub_resource type="Environment" id="Environment_cpbav"]
 background_mode = 1
@@ -25,15 +27,6 @@ radius = 2.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_jisn5"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_f6byu"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_68ek5"]
-viewport_path = NodePath("Dialogue Panel/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ydio"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_68ek5")
-
 [node name="Game" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -51,6 +44,8 @@ environment = SubResource("Environment_cpbav")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World3D/Living Lift"]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 3)
 mesh = SubResource("QuadMesh_688nc")
+
+[node name="Dialogue Panel" parent="World3D/Living Lift" instance=ExtResource("7_gf32d")]
 
 [node name="Level" type="Node3D" parent="World3D"]
 
@@ -140,37 +135,9 @@ get_offset_on_ready = true
 [node name="Inventory Control" parent="Canvas" node_paths=PackedStringArray("inventory") instance=ExtResource("1_e5p4f")]
 inventory = NodePath("../../World3D/Player/Inventory")
 
-[node name="Dialogue Panel" type="Node3D" parent="."]
-transform = Transform3D(-3.09086e-08, 0.707107, 0.707107, 3.09086e-08, 0.707107, -0.707107, -1, 0, -4.37114e-08, -4, 2, 3)
-
-[node name="SubViewport" type="SubViewport" parent="Dialogue Panel"]
-transparent_bg = true
-size = Vector2i(1152, 512)
-
-[node name="Dialogue Panel" type="Control" parent="Dialogue Panel/SubViewport"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Dialogue Panel/SubViewport/Dialogue Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 120
-text = "I. WANT. EAT."
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Dialogue Panel"]
-transform = Transform3D(2.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("PlaneMesh_f6byu")
-surface_material_override/0 = SubResource("StandardMaterial3D_0ydio")
+[node name="Startup Scenario" type="Node" parent="." node_paths=PackedStringArray("dialogue_panel")]
+script = ExtResource("8_5hj0e")
+dialogue_panel = NodePath("../World3D/Living Lift/Dialogue Panel")
 
 [connection signal="body_entered" from="World3D/Player/Interact Zone" to="World3D/Player" method="_on_interact_zone_body_entered"]
 [connection signal="body_exited" from="World3D/Player/Interact Zone" to="World3D/Player" method="_on_interact_zone_body_exited"]
