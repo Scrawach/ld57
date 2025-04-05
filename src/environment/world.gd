@@ -20,6 +20,8 @@ func _ready() -> void:
 	living_lift.dead.connect(_on_lift_dead)
 
 func _on_want_next_level() -> void:
+	living_lift.close_doors()
+	
 	var next_index: int = current_level_index + 1
 	if next_index >= levels.get_child_count():
 		return
@@ -39,14 +41,11 @@ func move_to_level(level_index: int) -> void:
 	
 	moving = create_tween()
 	moving.tween_property(living_lift, "global_position", target_level.get_lift_position(), 5)
+	moving.tween_callback(_on_level_started)
 	living_lift.dialogue_panel.hunger_bar.force_change(0, 5)
-	moving.tween_callback(_attach_player_to_world)
-	moving.tween_callback(func(): living_lift.hunger.current = 0)
 	current_level_index = level_index
 
-func _attach_player_to_world() -> void:
+func _on_level_started() -> void:
 	previous_level.hide()
-	living_lift.eat_zone.enable()
-	#player.get_parent().remove_child(player)
-	#add_child(player)
-	#player.position += current_level.get_lift_position()
+	living_lift.open_doors()
+	living_lift.hunger.current = 0
