@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://yfjs8g2riw6c"]
+
+[ext_resource type="Texture2D" uid="uid://boftn5dq57qp8" path="res://icon.svg" id="1_hrc8a"]
+[ext_resource type="Script" path="res://ui/inventory_control.gd" id="1_mw020"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo6vo"]
+bg_color = Color(0.172833, 0.172833, 0.172833, 1)
+draw_center = false
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qktr"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvna5"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqtrf"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Inventory Control" type="PanelContainer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -48.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mo6vo")
+script = ExtResource("1_mw020")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Item" type="PanelContainer" parent="MarginContainer/Container"]
+clip_children = 1
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qktr")
+
+[node name="Background" type="Panel" parent="MarginContainer/Container/Item"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kvna5")
+
+[node name="Icon Rect" type="TextureRect" parent="MarginContainer/Container/Item"]
+visible = false
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hrc8a")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Border" type="Panel" parent="MarginContainer/Container/Item"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sqtrf")

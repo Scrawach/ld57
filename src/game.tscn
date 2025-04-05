@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6rl31un1lcjf"]
+
+[ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://ui/inventory_control.tscn" id="1_e5p4f"]
+
+[node name="Game" type="Node"]
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Inventory Control" parent="Canvas" instance=ExtResource("1_e5p4f")]
