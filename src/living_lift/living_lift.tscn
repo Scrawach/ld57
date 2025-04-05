@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://6cthiya7h8jg"]
 
-[ext_resource type="Script" path="res://living_lift.gd" id="1_p8bgj"]
+[ext_resource type="Script" path="res://living_lift/living_lift.gd" id="1_p8bgj"]
 [ext_resource type="Resource" uid="uid://bxcg8onw2rbii" path="res://living_lift/lift_resource.tres" id="2_cjspu"]
-[ext_resource type="PackedScene" uid="uid://dsvuyf2ey8a4h" path="res://dialogue_panel.tscn" id="3_uugx3"]
+[ext_resource type="PackedScene" uid="uid://dsvuyf2ey8a4h" path="res://living_lift/dialogue_panel.tscn" id="3_uugx3"]
 [ext_resource type="Script" path="res://living_lift/eat_zone.gd" id="4_5xp8e"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_688nc"]

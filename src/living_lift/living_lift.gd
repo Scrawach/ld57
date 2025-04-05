@@ -17,4 +17,5 @@ func _ready() -> void:
 	eat_zone.eated.connect(_on_eated)
 
 func _on_eated(item: ItemResource) -> void:
-	hunger.current += 10
+	hunger.current += item.eat_power
+	health.current -= item.damage_power

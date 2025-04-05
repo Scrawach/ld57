@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dlo08xmlhe8sf"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_ydiw7"]
-[ext_resource type="Script" path="res://inventory.gd" id="2_e6sf5"]
-[ext_resource type="Script" path="res://stamina.gd" id="3_dtf2r"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_ydiw7"]
+[ext_resource type="Script" path="res://player/inventory/inventory.gd" id="2_e6sf5"]
+[ext_resource type="Script" path="res://player/stamina.gd" id="3_dtf2r"]
 [ext_resource type="Script" path="res://player/stamina_control.gd" id="4_2t717"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]

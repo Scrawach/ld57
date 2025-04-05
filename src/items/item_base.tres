@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://ba73upbd31jon"]
 
 [ext_resource type="Texture2D" uid="uid://boftn5dq57qp8" path="res://icon.svg" id="1_bx0f7"]
-[ext_resource type="Script" path="res://item_resource.gd" id="1_wob2x"]
+[ext_resource type="Script" path="res://items/item_resource.gd" id="1_wob2x"]
 
 [resource]
 script = ExtResource("1_wob2x")
 name = "Item"
 desciption = "Just nothing"
 icon = ExtResource("1_bx0f7")
+eat_power = 10
+damage_power = 10

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsvuyf2ey8a4h"]
 
-[ext_resource type="Script" path="res://dialogue_panel.gd" id="1_vyvw3"]
-[ext_resource type="PackedScene" uid="uid://c0crlqansv3uu" path="res://living_lift/reactive_bar.tscn" id="2_wg4kr"]
+[ext_resource type="Script" path="res://living_lift/dialogue_panel.gd" id="1_3i4c8"]
+[ext_resource type="PackedScene" uid="uid://c0crlqansv3uu" path="res://living_lift/reactive_bar.tscn" id="2_2quvk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu5fg"]
 bg_color = Color(0, 0, 0, 1)
@@ -33,7 +33,7 @@ albedo_texture = SubResource("ViewportTexture_fy0be")
 
 [node name="Dialogue Panel" type="Node3D"]
 transform = Transform3D(-3.09086e-08, 0.707107, 0.707107, 3.09086e-08, 0.707107, -0.707107, -1, 0, -4.37114e-08, -4, 2, 3)
-script = ExtResource("1_vyvw3")
+script = ExtResource("1_3i4c8")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -73,11 +73,11 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="Health Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_wg4kr")]
+[node name="Health Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_2quvk")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Hunger Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_wg4kr")]
+[node name="Hunger Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_2quvk")]
 unique_name_in_owner = true
 layout_mode = 2
 

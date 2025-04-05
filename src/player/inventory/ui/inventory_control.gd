@@ -4,7 +4,7 @@ extends PanelContainer
 @export var inventory: Inventory
 
 @onready var container: Control = $MarginContainer/Container
-@onready var item_template: PackedScene = preload("res://ui/item.tscn")
+@onready var item_template: PackedScene = preload("res://player/inventory/ui/item.tscn")
 
 var selected_index: int = -1
 

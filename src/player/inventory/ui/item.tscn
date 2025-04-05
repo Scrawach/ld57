@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://p2u2uglbag6q"]
 
-[ext_resource type="Script" path="res://ui/item_control.gd" id="1_4cxfs"]
+[ext_resource type="Script" path="res://player/inventory/ui/item_control.gd" id="1_4cxfs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qktr"]
 corner_radius_top_left = 10
