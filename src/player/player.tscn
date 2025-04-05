@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlo08xmlhe8sf"]
+[gd_scene load_steps=10 format=3 uid="uid://dlo08xmlhe8sf"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ydiw7"]
 [ext_resource type="Script" path="res://player/inventory/inventory.gd" id="2_e6sf5"]
 [ext_resource type="Script" path="res://player/stamina.gd" id="3_dtf2r"]
 [ext_resource type="Script" path="res://player/stamina_control.gd" id="4_2t717"]
+[ext_resource type="PackedScene" uid="uid://b74gpw2vld1en" path="res://environment/world_phrase.tscn" id="5_o2iwf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
 
@@ -55,13 +56,16 @@ one_shot = true
 one_shot = true
 
 [node name="Label3D" type="Label3D" parent="." node_paths=PackedStringArray("stamina")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00903749, 2.63169, 0.00244689)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00903749, 2.75313, 0.00244689)
 billboard = 1
+no_depth_test = true
 text = "100
 "
 font_size = 100
 script = ExtResource("4_2t717")
 stamina = NodePath("../Stamina")
+
+[node name="World Phrase" parent="." instance=ExtResource("5_o2iwf")]
 
 [connection signal="area_entered" from="Interact Zone" to="." method="_on_interact_zone_area_entered"]
 [connection signal="area_exited" from="Interact Zone" to="." method="_on_interact_zone_area_exited"]

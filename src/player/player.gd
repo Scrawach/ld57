@@ -10,6 +10,7 @@ const DASH_STAMINA_REQUIRED: int = 1
 
 @onready var inventory: Inventory = $Inventory
 @onready var stamina: Stamina = %Stamina
+@onready var phrase: WorldPhrase = $"World Phrase"
 
 var direction: float
 var nearest_interaction: Interaction
