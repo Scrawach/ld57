@@ -3,6 +3,14 @@ extends Interaction
 
 @export var item: ItemResource
 
+@onready var tooltip: Label3D = $Label3D
+
+func show_tooltip() -> void:
+	tooltip.show()
+
+func hide_tooltip() -> void:
+	tooltip.hide()
+
 func interact(player: Player) -> void:
 	var inventory: Inventory = player.inventory
 	if not inventory.has_empty_space():

@@ -58,8 +58,13 @@ func _interaction_process(delta: float) -> void:
 
 func _on_interact_zone_body_entered(body: Node3D) -> void:
 	if body is Interaction:
+		if nearest_interaction != null:
+			nearest_interaction.hide_tooltip()
+		
 		nearest_interaction = body
+		nearest_interaction.show_tooltip()
 
 func _on_interact_zone_body_exited(body: Node3D) -> void:
 	if nearest_interaction == body:
+		nearest_interaction.hide_tooltip()
 		nearest_interaction = null

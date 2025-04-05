@@ -21,6 +21,7 @@ mesh = SubResource("BoxMesh_jisn5")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 billboard = 1
 text = "[E]"
 font_size = 100
