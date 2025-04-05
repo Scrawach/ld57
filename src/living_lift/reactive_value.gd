@@ -23,3 +23,6 @@ func _init(current: int, max: int) -> void:
 
 func is_full() -> bool:
 	return current == max
+
+func is_empty() -> bool:
+	return current == 0

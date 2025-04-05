@@ -15,7 +15,9 @@ func _ready() -> void:
 	player.get_parent().remove_child(player)
 	living_lift.add_child(player)
 	current_level = levels.get_child(0) as Level
+	
 	living_lift.want_next_level.connect(_on_want_next_level)
+	living_lift.dead.connect(_on_lift_dead)
 
 func _on_want_next_level() -> void:
 	var next_index: int = current_level_index + 1
@@ -23,6 +25,10 @@ func _on_want_next_level() -> void:
 		return
 	
 	move_to_level(next_index)
+
+func _on_lift_dead() -> void:
+	var last_level_index: int = levels.get_child_count() - 1
+	move_to_level(last_level_index)
 
 func move_to_level(level_index: int) -> void:
 	living_lift.eat_zone.disable()

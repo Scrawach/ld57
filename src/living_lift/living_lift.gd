@@ -2,6 +2,7 @@ class_name LivingLift
 extends Node3D
 
 signal want_next_level()
+signal dead()
 
 @export var config: LiftResource
 
@@ -21,6 +22,10 @@ func _ready() -> void:
 func _on_eated(item: ItemResource) -> void:
 	hunger.current += item.eat_power
 	health.current -= item.damage_power
+	
+	if health.is_empty():
+		dead.emit()
+		return
 	
 	if hunger.is_full():
 		eat_zone.disable()

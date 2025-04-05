@@ -8,5 +8,5 @@ script = ExtResource("2_43cqn")
 name = "Item"
 desciption = "Just nothing"
 icon = ExtResource("1_mqyab")
-eat_power = 50
-damage_power = 50
+eat_power = 25
+damage_power = 0
