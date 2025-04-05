@@ -21,4 +21,8 @@ func _ready() -> void:
 func _on_eated(item: ItemResource) -> void:
 	hunger.current += item.eat_power
 	health.current -= item.damage_power
-	want_next_level.emit()
+	
+	if hunger.is_full():
+		eat_zone.disable()
+		await get_tree().create_timer(1).timeout
+		want_next_level.emit()

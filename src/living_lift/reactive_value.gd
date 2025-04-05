@@ -20,3 +20,6 @@ var max: int :
 func _init(current: int, max: int) -> void:
 	self.current = current
 	self.max = max
+
+func is_full() -> bool:
+	return current == max

@@ -25,6 +25,7 @@ func _on_want_next_level() -> void:
 	move_to_level(next_index)
 
 func move_to_level(level_index: int) -> void:
+	living_lift.eat_zone.disable()
 	previous_level = current_level
 	var target_level: Level = levels.get_child(level_index) as Level
 	current_level = target_level
@@ -32,11 +33,14 @@ func move_to_level(level_index: int) -> void:
 	
 	moving = create_tween()
 	moving.tween_property(living_lift, "global_position", target_level.get_lift_position(), 5)
+	living_lift.dialogue_panel.hunger_bar.force_change(0, 5)
 	moving.tween_callback(_attach_player_to_world)
+	moving.tween_callback(func(): living_lift.hunger.current = 0)
 	current_level_index = level_index
 
 func _attach_player_to_world() -> void:
 	previous_level.hide()
+	living_lift.eat_zone.enable()
 	#player.get_parent().remove_child(player)
 	#add_child(player)
 	#player.position += current_level.get_lift_position()
