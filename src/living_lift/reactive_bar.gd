@@ -13,6 +13,6 @@ func _on_value_updated(value: ReactiveValue) -> void:
 	if tween != null:
 		tween.kill()
 	
-	progress_bar.max_value = value.max
 	tween = create_tween()
 	tween.tween_property(progress_bar, "value", value.current, 0.5)
+	tween.tween_property(progress_bar, "max_value", value.max, 0.5)
