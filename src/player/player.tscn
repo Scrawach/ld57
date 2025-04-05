@@ -66,6 +66,7 @@ script = ExtResource("4_2t717")
 stamina = NodePath("../Stamina")
 
 [node name="World Phrase" parent="." instance=ExtResource("5_o2iwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [connection signal="area_entered" from="Interact Zone" to="." method="_on_interact_zone_area_entered"]
 [connection signal="area_exited" from="Interact Zone" to="." method="_on_interact_zone_area_exited"]
