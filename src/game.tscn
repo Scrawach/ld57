@@ -1,19 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=8 format=3 uid="uid://b6rl31un1lcjf"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_5y1ty"]
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://ui/inventory_control.tscn" id="1_e5p4f"]
 [ext_resource type="Script" path="res://following_camera.gd" id="2_v2k5q"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a4sl5"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_ypov8"]
-sky_material = SubResource("ProceduralSkyMaterial_a4sl5")
-
 [sub_resource type="Environment" id="Environment_cpbav"]
-background_mode = 2
-sky = SubResource("Sky_ypov8")
+background_mode = 1
 tonemap_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_688nc"]
@@ -27,6 +19,7 @@ tonemap_mode = 2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
+sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_cpbav")
@@ -84,10 +77,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_fm8i8")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2, 2)
+transform = Transform3D(0.866025, -0.283548, 0.411826, 0, 0.823651, 0.567097, -0.5, -0.49112, 0.713303, 2, 4, 3)
+projection = 1
+size = 10.0
 script = ExtResource("2_v2k5q")
 target = NodePath("../World3D/Player")
-offset = Vector3(0, 5, 5)
+offset = Vector3(-5, 5, 5)
+get_offset_on_ready = true
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 
