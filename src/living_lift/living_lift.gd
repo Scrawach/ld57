@@ -1,6 +1,8 @@
 class_name LivingLift
 extends Node3D
 
+signal want_next_level()
+
 @export var config: LiftResource
 
 @onready var dialogue_panel: DialoguePanel = %"Dialogue Panel"
@@ -19,3 +21,4 @@ func _ready() -> void:
 func _on_eated(item: ItemResource) -> void:
 	hunger.current += item.eat_power
 	health.current -= item.damage_power
+	want_next_level.emit()

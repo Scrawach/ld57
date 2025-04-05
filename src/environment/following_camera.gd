@@ -8,10 +8,10 @@ extends Camera3D
 
 func _ready() -> void:
 	if get_offset_on_ready:
-		offset = position - target.position
+		offset = global_position - target.global_position
 
 func _process(delta: float) -> void:
 	if target == null:
 		return
 	
-	position = target.position + offset
+	position = target.global_position + offset
