@@ -25,6 +25,9 @@ func show_tooltip(player: Player) -> void:
 	if is_disabled:
 		return
 	
+	if inventory.item_selected.is_connected(_on_item_selected):
+		inventory.item_selected.disconnect(_on_item_selected)
+	
 	inventory = player.inventory
 	inventory.item_selected.connect(_on_item_selected)
 	if player.inventory.is_selected_item():
