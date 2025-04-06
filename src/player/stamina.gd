@@ -20,21 +20,29 @@ func is_full() -> bool:
 	return current == max
 
 func consume(value: int) -> void:
+	var previous_value: int = current
 	current -= value
 	current = max(0, current)
-	changed.emit(current, max)
 	
+	if previous_value != current:
+		changed.emit(current, max)
+		
 	recovery_timer.stop()
 	consume_awaiting_timer.start()
 
 func recovery(value: int) -> void:
+	var previous_value: int = current
 	current += value
 	current = min(current, max)
-	changed.emit(current, max)
+	
+	if previous_value != current:
+		changed.emit(current, max)
 
 func _on_recovery_timeout() -> void:
 	recovery(5)
-	recovery_timer.start()
+	
+	if current != max:
+		recovery_timer.start()
 
 func _on_consume_awaiting_timeout() -> void:
 	recovery_timer.start()

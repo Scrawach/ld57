@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtfq2hqhgv67s"]
+
+[ext_resource type="Script" path="res://player/player_hud.gd" id="1_wcpbh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jicl0"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kwbi"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d40it"]
+bg_color = Color(0.0756, 0.84, 0.43232, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[node name="Player Hud" type="Node3D"]
+script = ExtResource("1_wcpbh")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 2.79281, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_jicl0")
+region_rect = Rect2(1.665, 0, 0, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+
+[node name="Control" type="VBoxContainer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Reactive Bar" type="HBoxContainer" parent="SubViewport/Control/MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/MarginContainer/Reactive Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Stamina Progress Bar" type="ProgressBar" parent="SubViewport/Control/MarginContainer/Reactive Bar/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_8kwbi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_d40it")
+value = 50.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

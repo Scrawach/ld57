@@ -68,7 +68,7 @@ func get_movement_input(relative: Node3D) -> Vector3:
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
-	input = input.rotated(Vector3.UP, relative.rotation.y)
+	#input = input.rotated(Vector3.UP, relative.rotation.y)
 	return input.normalized()
 
 func _handle_gravity(delta: float) -> void:

@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://player/player.gd" id="1_ydiw7"]
 [ext_resource type="Script" path="res://player/inventory/inventory.gd" id="2_e6sf5"]
 [ext_resource type="Script" path="res://player/stamina.gd" id="3_dtf2r"]
-[ext_resource type="Script" path="res://player/stamina_control.gd" id="4_2t717"]
 [ext_resource type="PackedScene" uid="uid://b74gpw2vld1en" path="res://environment/world_phrase.tscn" id="5_o2iwf"]
 [ext_resource type="PackedScene" uid="uid://bo5cw3m5hdc6" path="res://player/player.fbx" id="6_pyncv"]
 [ext_resource type="ArrayMesh" uid="uid://csucg8i7w3ry6" path="res://player/Sphere_001.res" id="7_j7nf2"]
+[ext_resource type="PackedScene" uid="uid://dtfq2hqhgv67s" path="res://player/player_hud.tscn" id="8_d88fb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
 
@@ -57,16 +57,6 @@ one_shot = true
 
 [node name="Consume Awaiting" type="Timer" parent="Stamina"]
 one_shot = true
-
-[node name="Label3D" type="Label3D" parent="." node_paths=PackedStringArray("stamina")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00903749, 2.75313, 0.00244689)
-billboard = 1
-no_depth_test = true
-text = "100
-"
-font_size = 100
-script = ExtResource("4_2t717")
-stamina = NodePath("../Stamina")
 
 [node name="World Phrase" parent="." instance=ExtResource("5_o2iwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -147,6 +137,9 @@ angle_max = 360.0
 scale_amount_min = 0.2
 scale_amount_max = 0.75
 scale_amount_curve = SubResource("Curve_b71u0")
+
+[node name="Player Hud" parent="." node_paths=PackedStringArray("stamina") instance=ExtResource("8_d88fb")]
+stamina = NodePath("../Stamina")
 
 [connection signal="area_entered" from="Interact Zone" to="." method="_on_interact_zone_area_entered"]
 [connection signal="area_exited" from="Interact Zone" to="." method="_on_interact_zone_area_exited"]

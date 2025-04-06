@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsvuyf2ey8a4h"]
+[gd_scene load_steps=11 format=3 uid="uid://dsvuyf2ey8a4h"]
 
 [ext_resource type="Script" path="res://living_lift/dialogue_panel.gd" id="1_3i4c8"]
 [ext_resource type="PackedScene" uid="uid://c0crlqansv3uu" path="res://living_lift/reactive_bar.tscn" id="2_2quvk"]
+[ext_resource type="Texture2D" uid="uid://d2dgkpx72dq1o" path="res://living_lift/icons/heart-icon.svg" id="3_ljba4"]
+[ext_resource type="Texture2D" uid="uid://dfa7qgrm1g3pv" path="res://living_lift/icons/hunger-icon.svg" id="4_d1omt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu5fg"]
 bg_color = Color(0, 0, 0, 1)
@@ -86,9 +88,17 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="TextureRect" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Health Bar" index="0"]
+self_modulate = Color(0.88, 0.2112, 0.24464, 1)
+texture = ExtResource("3_ljba4")
+
 [node name="Hunger Bar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer" instance=ExtResource("2_2quvk")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="TextureRect" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Hunger Bar" index="0"]
+self_modulate = Color(0.283287, 0.55073, 0.903341, 1)
+texture = ExtResource("4_d1omt")
 
 [node name="ProgressBar" parent="SubViewport/Dialogue Panel/Status/VBoxContainer/Hunger Bar/MarginContainer" index="0"]
 theme_override_styles/fill = SubResource("StyleBoxFlat_n462f")
