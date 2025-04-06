@@ -162,6 +162,7 @@ func _play_landing_sound() -> void:
 	Audio.play("res://player/sounds/landing.mp3", Vector2(0.55, 0.65))
 
 func _on_step() -> void:
+	print("on_step")
 	camera.shake_weak()
 	Audio.play("res://player/sounds/step.mp3", Vector2(0.7, 0.9))
 	
