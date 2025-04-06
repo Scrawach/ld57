@@ -7,6 +7,7 @@ const GRAVITY_STRENGTH: int = 20
 const IDLE_ANIMATION: String = "Armature|Idle"
 const RUN_ANIMATION: String = "Armature|Run"
 const JUMP_ANIMATION: String = "Armature|Jump"
+const JUMP_2_ANIMATION: String = "Armature|Jump_001"
 
 @export var camera: Node3D
 
@@ -30,6 +31,9 @@ var direction: float
 var nearest_interaction: Interaction
 
 var init_rotation: float
+
+var jump_animations: Array[String] = [JUMP_ANIMATION, JUMP_2_ANIMATION]
+var jump_animation_index: int
 
 func _ready() -> void:
 	init_rotation = rotation.y
@@ -107,8 +111,11 @@ func _animation_process(delta: float) -> void:
 		
 		if speed_factor > 0.4:
 			moving_trail.emitting = true
-	elif animation.current_animation != JUMP_ANIMATION:
-		animation.play(JUMP_ANIMATION, 0.1)
+	
+	elif animation.current_animation != jump_animations[jump_animation_index]:
+		jump_animation_index += 1
+		jump_animation_index %= jump_animations.size()
+		animation.play(jump_animations[jump_animation_index], 0.1)
 
 func _interaction_process(delta: float) -> void:
 	if nearest_interaction != null and Input.is_action_just_pressed("interact"):
