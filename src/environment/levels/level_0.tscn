@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://8fseq5e5xwxe" path="res://environment/rooms/ground.tscn" id="21_kj465"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8fdi"]
-size = Vector3(100, 1, 100)
+size = Vector3(100, 60, 100)
 
 [node name="Level_0" type="Node3D"]
 script = ExtResource("1_tepbp")
@@ -310,5 +310,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeadZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -35, -20)
 shape = SubResource("BoxShape3D_x8fdi")

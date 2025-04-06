@@ -25,19 +25,21 @@ const JUMP_2_ANIMATION: String = "Armature|Jump_001"
 @onready var moving_trail: CPUParticles3D = $"Moving Trail"
 @onready var landing_trail: CPUParticles3D = $"Landing Trail"
 
+@onready var jumping_availability: Timer = $"Jumping Availability"
+
 var gravity: float
 var previously_floored: bool
 
 var direction: float
 var nearest_interaction: Interaction
 
-var init_rotation: float
-
+var can_jump: bool
 var jump_animations: Array[String] = [JUMP_ANIMATION, JUMP_2_ANIMATION]
 var jump_animation_index: int
 
+
 func _ready() -> void:
-	init_rotation = rotation.y
+	jumping_availability.timeout.connect(_on_jumping_availability_timeout)
 
 func _physics_process(delta: float) -> void:
 	_interaction_process(delta)
@@ -59,7 +61,17 @@ func _movement_process(delta: float) -> void:
 	else:
 		animation.speed_scale = 1.5
 	
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if is_on_floor():
+		can_jump = true
+	
+	if previously_floored and not is_on_floor():
+		jumping_availability.start()
+	
+	previously_floored = is_on_floor()
+	
+	if Input.is_action_just_pressed("jump") and can_jump:
+		jumping_availability.stop()
+		can_jump = false
 		jump()
 	
 	var movement = movement_input * speed * delta
@@ -100,7 +112,6 @@ func _animation_process(delta: float) -> void:
 		model.scale = Vector3(1.4, 0.7, 1.4)
 		landing_trail.emitting = true
 		
-	previously_floored = is_on_floor()
 	
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)
@@ -142,3 +153,6 @@ func _on_interact_zone_area_exited(area: Area3D) -> void:
 	if nearest_interaction == area:
 		nearest_interaction.hide_tooltip(self)
 		nearest_interaction = null
+
+func _on_jumping_availability_timeout() -> void:
+	can_jump = is_on_floor()
