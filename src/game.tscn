@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=18 format=3 uid="uid://b6rl31un1lcjf"]
 
 [ext_resource type="Script" path="res://environment/world.gd" id="1_3ko1t"]
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://player/inventory/ui/inventory_control.tscn" id="1_e5p4f"]
@@ -6,8 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cu1sy3dij4mv2" path="res://monsters/monster.tscn" id="2_74s4o"]
 [ext_resource type="PackedScene" uid="uid://dlo08xmlhe8sf" path="res://player/player.tscn" id="2_tmo8h"]
 [ext_resource type="PackedScene" uid="uid://bfd4d67pvnf0y" path="res://items/pickup_item.tscn" id="4_yibxu"]
-[ext_resource type="PackedScene" uid="uid://oliimtydwxat" path="res://environment/levels/level_0.tscn" id="6_ehy4j"]
+[ext_resource type="PackedScene" uid="uid://oliimtydwxat" path="res://environment/levels/level_1.tscn" id="6_be11e"]
+[ext_resource type="PackedScene" uid="uid://c3x0d2b7wvi37" path="res://environment/levels/level_0.tscn" id="6_ehy4j"]
 [ext_resource type="Script" path="res://environment/startup_scenario.gd" id="8_5hj0e"]
+[ext_resource type="Script" path="res://environment/ui/global_tooltip.gd" id="9_a107p"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="9_hod36"]
+[ext_resource type="Script" path="res://environment/scenarios/start_game.gd" id="9_qee86"]
+[ext_resource type="Script" path="res://environment/scenarios/main_scenario.gd" id="9_s3pyk"]
 
 [sub_resource type="Environment" id="Environment_cpbav"]
 background_mode = 1
@@ -27,6 +32,13 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 cell_height = 0.05
 
 [sub_resource type="QuadMesh" id="QuadMesh_p70e8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2oh1w"]
+bg_color = Color(0, 0, 0, 0.666667)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Game" type="Node"]
 
@@ -81,42 +93,36 @@ unique_name_in_owner = true
 script = ExtResource("1_3ko1t")
 
 [node name="Living Lift" parent="World3D" instance=ExtResource("1_u2u37")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.9019, 0.0921736, 1.12016)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.902, 0, 1.12)
 
 [node name="Levels" type="Node3D" parent="World3D"]
 
 [node name="Level_0" parent="World3D/Levels" instance=ExtResource("6_ehy4j")]
 
+[node name="Level_1" parent="World3D/Levels" instance=ExtResource("6_be11e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60, 0)
+visible = false
+
 [node name="Player" parent="World3D" instance=ExtResource("2_tmo8h")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 12.9937, 3, 0.51475)
+transform = Transform3D(0.993379, 0, -0.114885, 0, 1, 0, 0.114885, 0, 0.993379, 9.9051, 1.15445, -20.1152)
 movement_speed = 400
 dash_speed = 700
 
 [node name="Skeleton3D" parent="World3D/Player/Player Model/Armature" index="0"]
-bones/0/scale = Vector3(1, 0.967492, 1)
-bones/2/position = Vector3(0, 0.00561738, 0)
-bones/3/position = Vector3(0, 0.014217, 0)
 bones/5/position = Vector3(0.00745305, 0.0087154, 1.92574e-09)
 bones/5/rotation = Quaternion(0.617176, 0.617176, 0.345099, -0.345099)
 bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-2.12396e-10, 0.00834451, 1.30543e-10)
 bones/6/rotation = Quaternion(1.34309e-14, 8.74567e-08, 2.13371e-14, 1)
-bones/6/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-0.00745305, 0.0087154, 1.92574e-09)
 bones/8/rotation = Quaternion(0.617176, -0.617176, -0.345099, -0.345099)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(2.12396e-10, 0.00834451, 1.30543e-10)
 bones/9/rotation = Quaternion(1.34309e-14, -8.74567e-08, -2.13371e-14, 1)
-bones/9/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(0.00601977, 0.0201376, 4.91063e-10)
 bones/11/rotation = Quaternion(0.872819, 1.69561e-07, 0.488044, -2.34542e-07)
 bones/11/scale = Vector3(1, 1, 1)
-bones/12/position = Vector3(-7.66591e-11, 0.00920448, -4.00317e-10)
 bones/12/rotation = Quaternion(-1.61943e-07, -4.0624e-08, 1.14088e-07, 1)
 bones/14/position = Vector3(-0.00601977, 0.0201376, 4.91063e-10)
 bones/14/rotation = Quaternion(0.872819, -1.69561e-07, -0.488044, -2.34542e-07)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(7.66591e-11, 0.00920448, -4.00317e-10)
 bones/15/rotation = Quaternion(-1.61943e-07, 4.0624e-08, -1.14088e-07, 1)
 bones/15/scale = Vector3(1, 1, 1)
 
@@ -128,11 +134,44 @@ speed_scale = 1.0
 [node name="Inventory Control" parent="Canvas" node_paths=PackedStringArray("inventory") instance=ExtResource("1_e5p4f")]
 inventory = NodePath("../../World3D/Player/Inventory")
 
-[node name="Scenarios" type="Node" parent="."]
+[node name="Global Tooltip" type="PanelContainer" parent="Canvas"]
+visible = false
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 236.0
+offset_bottom = 53.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2oh1w")
+script = ExtResource("9_a107p")
 
-[node name="Startup Scenario" type="Node" parent="Scenarios" node_paths=PackedStringArray("dialogue_panel")]
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Global Tooltip"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Canvas/Global Tooltip/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_hod36")
+theme_override_font_sizes/font_size = 32
+text = "You can walk on [w, a, s, d]"
+
+[node name="Timer" type="Timer" parent="Canvas/Global Tooltip"]
+one_shot = true
+
+[node name="Scenarios" type="Node" parent="."]
+script = ExtResource("9_s3pyk")
+
+[node name="Start Game" type="Node" parent="Scenarios" node_paths=PackedStringArray("player", "tooltip")]
+script = ExtResource("9_qee86")
+player = NodePath("../../World3D/Player")
+tooltip = NodePath("../../Canvas/Global Tooltip")
+
+[node name="Startup Scenario" type="Node" parent="Scenarios" node_paths=PackedStringArray("dialogue_panel", "player", "tooltip")]
 script = ExtResource("8_5hj0e")
 dialogue_panel = NodePath("../../World3D/Living Lift/Dialogue Panel")
+player = NodePath("../../World3D/Player")
+tooltip = NodePath("../../Canvas/Global Tooltip")
 
 [editable path="World3D/Player"]
 [editable path="World3D/Player/Player Model"]

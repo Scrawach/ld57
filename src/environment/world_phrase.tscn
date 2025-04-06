@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b74gpw2vld1en"]
+[gd_scene load_steps=3 format=3 uid="uid://b74gpw2vld1en"]
 
 [ext_resource type="Script" path="res://environment/world_phrase.gd" id="1_3s1qs"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="2_c0a7a"]
 
 [node name="World Phrase" type="Node3D"]
 script = ExtResource("1_3s1qs")
@@ -8,7 +9,9 @@ script = ExtResource("1_3s1qs")
 [node name="Phrase Label" type="Label3D" parent="."]
 billboard = 1
 no_depth_test = true
-font_size = 64
+font = ExtResource("2_c0a7a")
+font_size = 80
+outline_size = 24
 
 [node name="Timer" type="Timer" parent="Phrase Label"]
 wait_time = 2.0
