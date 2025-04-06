@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://dmu3yyg4jx8ye"]
+
+[ext_resource type="Texture2D" uid="uid://dlhhkficwawa1" path="res://items/icons/meal-icon.png" id="1_w2i4j"]
+[ext_resource type="Script" path="res://items/item_resource.gd" id="2_ausd4"]
+[ext_resource type="PackedScene" uid="uid://o8fq8s6v0qr5" path="res://items/models/meal.fbx" id="2_hvngo"]
+
+[resource]
+script = ExtResource("2_ausd4")
+name = "Meal"
+desciption = "Get some meal"
+icon = ExtResource("1_w2i4j")
+eat_power = 25
+damage_power = 0
+model = ExtResource("2_hvngo")

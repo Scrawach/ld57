@@ -70,4 +70,5 @@ no_depth_test = true
 text = "NEXT FLOOR?"
 font = ExtResource("4_nr2ag")
 font_size = 80
+outline_size = 24
 script = ExtResource("5_yki23")

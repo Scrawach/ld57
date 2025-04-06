@@ -5,6 +5,7 @@ extends Interaction
 
 @onready var tooltip: Label3D = $Label3D
 
+
 func show_tooltip(_player: Player) -> void:
 	tooltip.show()
 

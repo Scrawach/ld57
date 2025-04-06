@@ -6,3 +6,4 @@ extends Resource
 @export var icon: Texture2D
 @export var eat_power: int
 @export var damage_power: int
+@export var model: PackedScene
