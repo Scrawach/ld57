@@ -1,6 +1,9 @@
 class_name World
 extends Node3D
 
+@export var final_zone: Area3D
+@export var final_control: Control
+
 @onready var levels: Node3D = $Levels
 @onready var living_lift: LivingLift = $"Living Lift"
 @onready var player: Player = $Player
@@ -16,6 +19,7 @@ func _ready() -> void:
 	living_lift.want_next_level.connect(_on_want_next_level)
 	living_lift.dead.connect(_on_lift_dead)
 	living_lift.display_floor(get_next_floor_number())
+	final_zone.body_entered.connect(_on_body_entered_at_final_zone)
 
 func get_house_size() -> int:
 	return levels.get_child_count()
@@ -57,3 +61,6 @@ func _on_level_started() -> void:
 	previous_level.hide()
 	living_lift.open_doors()
 	living_lift.display_floor(get_next_floor_number())
+
+func _on_body_entered_at_final_zone(body: Node3D) -> void:
+	final_control.show()

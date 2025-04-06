@@ -1,0 +1,236 @@
+[gd_scene load_steps=19 format=3 uid="uid://b4a5u5o5epv4m"]
+
+[ext_resource type="PackedScene" uid="uid://cu1sy3dij4mv2" path="res://monsters/monster.tscn" id="1_2jjvd"]
+[ext_resource type="PackedScene" uid="uid://bfd4d67pvnf0y" path="res://items/pickup_item.tscn" id="2_uogjv"]
+[ext_resource type="Script" path="res://environment/world.gd" id="3_lpn2f"]
+[ext_resource type="PackedScene" uid="uid://6cthiya7h8jg" path="res://living_lift/living_lift.tscn" id="4_uaupd"]
+[ext_resource type="PackedScene" uid="uid://c3x0d2b7wvi37" path="res://environment/levels/level_0.tscn" id="5_jgbxp"]
+[ext_resource type="PackedScene" uid="uid://oliimtydwxat" path="res://environment/levels/level_1.tscn" id="6_pmeyy"]
+[ext_resource type="PackedScene" uid="uid://dlo08xmlhe8sf" path="res://player/player.tscn" id="7_mq3gs"]
+[ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://player/inventory/ui/inventory_control.tscn" id="8_pvf1f"]
+[ext_resource type="Script" path="res://environment/ui/global_tooltip.gd" id="9_bt4s0"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="10_gaxjj"]
+[ext_resource type="Script" path="res://environment/scenarios/main_scenario.gd" id="11_qrh3m"]
+[ext_resource type="Script" path="res://environment/scenarios/start_game.gd" id="12_jrybj"]
+[ext_resource type="Script" path="res://environment/startup_scenario.gd" id="13_yyxr8"]
+
+[sub_resource type="Environment" id="Environment_cpbav"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.4536, 0.50832, 0.54, 1)
+tonemap_mode = 1
+glow_enabled = true
+glow_intensity = 0.5
+glow_hdr_threshold = 0.79
+fog_light_color = Color(0.212828, 0.407195, 0.420794, 1)
+fog_light_energy = 2.2
+adjustment_enabled = true
+adjustment_brightness = 1.02
+adjustment_contrast = 1.15
+adjustment_saturation = 1.15
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_kve1j"]
+vertices = PackedVector3Array(-2, 0.0999999, -4, -2, 0.0999999, 0, 7, 0.0999999, 0, 7, 0.0999999, -4)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_p70e8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2oh1w"]
+bg_color = Color(0, 0, 0, 0.666667)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_entfl"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cpbav")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.5
+shadow_enabled = true
+shadow_opacity = 0.7
+sky_mode = 1
+
+[node name="Start Level" type="Node3D" parent="."]
+visible = false
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Start Level"]
+navigation_mesh = SubResource("NavigationMesh_kve1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Start Level/NavigationRegion3D"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 0, 0, -2)
+mesh = SubResource("QuadMesh_p70e8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Start Level/NavigationRegion3D"]
+transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 5, 0, -2)
+mesh = SubResource("QuadMesh_p70e8")
+
+[node name="Monster" parent="Start Level" node_paths=PackedStringArray("waypoints") instance=ExtResource("1_2jjvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48476, 0, -2.52374)
+waypoints = [NodePath("../Way Points/Marker3D"), NodePath("../Way Points/Marker3D2")]
+
+[node name="Way Points" type="Node3D" parent="Start Level"]
+
+[node name="Marker3D" type="Marker3D" parent="Start Level/Way Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.63781, -0.985506, -0.701387)
+gizmo_extents = 1.0
+
+[node name="Marker3D2" type="Marker3D" parent="Start Level/Way Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -4)
+gizmo_extents = 3.35
+
+[node name="Pickup Item2" parent="Start Level" instance=ExtResource("2_uogjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02079, 1, -4.98425)
+
+[node name="Pickup Item" parent="Start Level" instance=ExtResource("2_uogjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2)
+
+[node name="Lift Position" type="Marker3D" parent="Start Level"]
+unique_name_in_owner = true
+
+[node name="World3D" type="Node3D" parent="." node_paths=PackedStringArray("final_zone", "final_control")]
+script = ExtResource("3_lpn2f")
+final_zone = NodePath("Levels/Level_2/Final Zone")
+final_control = NodePath("../Canvas/Final Container")
+
+[node name="Living Lift" parent="World3D" instance=ExtResource("4_uaupd")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.902, 0, 1.12)
+
+[node name="Levels" type="Node3D" parent="World3D"]
+
+[node name="Level_0" parent="World3D/Levels" instance=ExtResource("5_jgbxp")]
+
+[node name="Level_1" parent="World3D/Levels" instance=ExtResource("6_pmeyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+visible = false
+
+[node name="Level_2" parent="World3D/Levels" instance=ExtResource("6_pmeyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+visible = false
+
+[node name="Player" parent="World3D" instance=ExtResource("7_mq3gs")]
+transform = Transform3D(0.993379, 0, -0.114885, 0, 1, 0, 0.114885, 0, 0.993379, 9.9051, 1.15445, -20.1152)
+movement_speed = 400
+dash_speed = 700
+
+[node name="Skeleton3D" parent="World3D/Player/Player Model/Armature" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/0/scale = Vector3(1, 0.967492, 1)
+bones/2/position = Vector3(0, 0.00561738, 0)
+bones/3/position = Vector3(0, 0.014217, 0)
+bones/5/position = Vector3(0.00745305, 0.0087154, 1.92574e-09)
+bones/5/rotation = Quaternion(0.617176, 0.617176, 0.345099, -0.345099)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-2.12396e-10, 0.00834451, 1.30543e-10)
+bones/6/rotation = Quaternion(1.34309e-14, 8.74567e-08, 2.13371e-14, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-0.00745305, 0.0087154, 1.92574e-09)
+bones/8/rotation = Quaternion(0.617176, -0.617176, -0.345099, -0.345099)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(2.12396e-10, 0.00834451, 1.30543e-10)
+bones/9/rotation = Quaternion(1.34309e-14, -8.74567e-08, -2.13371e-14, 1)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(0.00601977, 0.0201376, 4.91063e-10)
+bones/11/rotation = Quaternion(0.872819, 1.69561e-07, 0.488044, -2.34542e-07)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-7.66591e-11, 0.00920448, -4.00317e-10)
+bones/12/rotation = Quaternion(-1.61943e-07, -4.0624e-08, 1.14088e-07, 1)
+bones/14/position = Vector3(-0.00601977, 0.0201376, 4.91063e-10)
+bones/14/rotation = Quaternion(0.872819, -1.69561e-07, -0.488044, -2.34542e-07)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(7.66591e-11, 0.00920448, -4.00317e-10)
+bones/15/rotation = Quaternion(-1.61943e-07, 4.0624e-08, -1.14088e-07, 1)
+bones/15/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="World3D/Player/Player Model" index="1"]
+speed_scale = 1.0
+
+[node name="Camera3D" parent="World3D/Player/Camera Root/Camera Yaw/Camera Pitch/SpringArm3D" index="0"]
+transform = Transform3D(0.997123, -0.0751, -0.0101068, 0.0751537, 0.997159, 0.00505274, 0.00969861, -0.00579777, 0.999936, 0, 0, 5)
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Inventory Control" parent="Canvas" node_paths=PackedStringArray("inventory") instance=ExtResource("8_pvf1f")]
+inventory = NodePath("../../World3D/Player/Inventory")
+
+[node name="Global Tooltip" type="PanelContainer" parent="Canvas"]
+visible = false
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 236.0
+offset_bottom = 53.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2oh1w")
+script = ExtResource("9_bt4s0")
+
+[node name="MarginContainer" type="MarginContainer" parent="Canvas/Global Tooltip"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Canvas/Global Tooltip/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_gaxjj")
+theme_override_font_sizes/font_size = 32
+text = "You can walk on [w, a, s, d]"
+
+[node name="Timer" type="Timer" parent="Canvas/Global Tooltip"]
+one_shot = true
+
+[node name="Final Container" type="PanelContainer" parent="Canvas"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_entfl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Canvas/Final Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Canvas/Final Container/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.746833, 1, 0.51, 1)
+theme_override_fonts/font = ExtResource("10_gaxjj")
+theme_override_font_sizes/font_size = 100
+text = "Final."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Canvas/Final Container/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_gaxjj")
+theme_override_font_sizes/font_size = 42
+text = "Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scenarios" type="Node" parent="."]
+script = ExtResource("11_qrh3m")
+
+[node name="Start Game" type="Node" parent="Scenarios" node_paths=PackedStringArray("player", "elevator", "tooltip")]
+script = ExtResource("12_jrybj")
+player = NodePath("../../World3D/Player")
+elevator = NodePath("../../World3D/Living Lift")
+tooltip = NodePath("../../Canvas/Global Tooltip")
+
+[node name="Startup Scenario" type="Node" parent="Scenarios" node_paths=PackedStringArray("living_lift", "world", "player", "tooltip")]
+script = ExtResource("13_yyxr8")
+living_lift = NodePath("../../World3D/Living Lift")
+world = NodePath("../../World3D")
+player = NodePath("../../World3D/Player")
+tooltip = NodePath("../../Canvas/Global Tooltip")
+
+[editable path="World3D/Levels/Level_2"]
+[editable path="World3D/Player"]
+[editable path="World3D/Player/Player Model"]
