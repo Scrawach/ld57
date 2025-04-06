@@ -17,7 +17,7 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d40it"]
-bg_color = Color(0.0756, 0.84, 0.43232, 1)
+bg_color = Color(0.0318, 0.53, 0.0650133, 1)
 corner_radius_top_left = 60
 corner_radius_top_right = 60
 corner_radius_bottom_right = 60
@@ -27,7 +27,7 @@ corner_radius_bottom_left = 60
 script = ExtResource("1_wcpbh")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 2.79281, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 2.31974, 0)
 visible = false
 billboard = 1
 no_depth_test = true

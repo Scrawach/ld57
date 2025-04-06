@@ -4,10 +4,11 @@ extends Scenario
 
 func execute() -> void:
 	await wait(1)
-	show_tooltip("You can walk on [w, a, s, d]")
+	show_tooltip("You can walk on W, A, S, D", 4)
 	for dialogue in get_dialogues():
 		player.phrase.say(dialogue)
 		await wait(2)
+	show_tooltip("SPACE for jump", 2)
 
 func get_dialogues() -> Array[String]:
 	return [

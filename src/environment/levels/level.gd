@@ -6,6 +6,15 @@ extends Node3D
 
 var offset: Vector3 = Vector3(0, 250, 0)
 
+func get_lift_position() -> Vector3:
+	return elevator_position.global_position
+
+func disable_dead_zone() -> void:
+	dead_zone.monitoring = false
+
+func enable_dead_zone() -> void:
+	dead_zone.monitoring = true
+
 func _ready() -> void:
 	dead_zone.body_entered.connect(_on_body_entered)
 

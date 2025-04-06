@@ -15,6 +15,8 @@ var health: ReactiveValue
 var hunger: ReactiveValue
 
 func _ready() -> void:
+	dialogue_panel.hide_status()
+	
 	health = ReactiveValue.new(config.startup_health, config.max_health)
 	hunger = ReactiveValue.new(config.startup_hunger, config.max_hunger)
 	dialogue_panel.attach(self)

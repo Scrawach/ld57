@@ -31,7 +31,7 @@ func show_tooltip(player: Player) -> void:
 		label.show()
 
 func hide_tooltip(player: Player) -> void:
-	if is_disabled:
+	if is_disabled or not inventory:
 		return
 	
 	inventory.item_selected.disconnect(_on_item_selected)

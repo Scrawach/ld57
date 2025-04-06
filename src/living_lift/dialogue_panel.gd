@@ -13,6 +13,9 @@ func show_text(text: String) -> void:
 	
 	label.text = text
 
+func hide_status() -> void:
+	status.hide()
+
 func show_status() -> void:
 	label.hide()
 	status.show()
