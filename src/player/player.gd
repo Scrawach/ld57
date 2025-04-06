@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 const DASH_STAMINA_REQUIRED: int = 1
 const GRAVITY_STRENGTH: int = 20
+const GRAVITY_BOUND: float = 40
 
 const IDLE_ANIMATION: String = "Armature|Idle"
 const RUN_ANIMATION: String = "Armature|Run"
@@ -82,6 +83,7 @@ func get_movement_input(relative: Node3D) -> Vector3:
 
 func _handle_gravity(delta: float) -> void:
 	gravity += GRAVITY_STRENGTH * delta
+	gravity = min(GRAVITY_BOUND, gravity)
 
 	if gravity > 0 and is_on_floor():
 		gravity = 0
