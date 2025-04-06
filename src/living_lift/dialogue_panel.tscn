@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsvuyf2ey8a4h"]
+[gd_scene load_steps=12 format=3 uid="uid://dsvuyf2ey8a4h"]
 
 [ext_resource type="Script" path="res://living_lift/dialogue_panel.gd" id="1_3i4c8"]
 [ext_resource type="PackedScene" uid="uid://c0crlqansv3uu" path="res://living_lift/reactive_bar.tscn" id="2_2quvk"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="2_b70ps"]
 [ext_resource type="Texture2D" uid="uid://d2dgkpx72dq1o" path="res://living_lift/icons/heart-icon.svg" id="3_ljba4"]
 [ext_resource type="Texture2D" uid="uid://dfa7qgrm1g3pv" path="res://living_lift/icons/hunger-icon.svg" id="4_d1omt"]
 
@@ -67,6 +68,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dt31n")
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_b70ps")
 theme_override_font_sizes/font_size = 120
 text = "I. WANT. EAT."
 horizontal_alignment = 1

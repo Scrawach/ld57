@@ -63,7 +63,7 @@ libraries = {
 shape = SubResource("SphereShape3D_kb4ln")
 
 [node name="Tooltip" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2541, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05255, 0)
 visible = false
 billboard = 1
 no_depth_test = true
