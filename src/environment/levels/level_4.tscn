@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds1d8tyjx68w1"]
+
+[ext_resource type="Script" path="res://environment/levels/level.gd" id="1_vplpu"]
+[ext_resource type="PackedScene" uid="uid://ddg3xa2ofdwwp" path="res://environment/props/water.tscn" id="2_50m63"]
+[ext_resource type="PackedScene" uid="uid://hi13qt5n7hme" path="res://environment/props/plant_2.tscn" id="3_wf03p"]
+[ext_resource type="PackedScene" uid="uid://c7ri3pdtngeob" path="res://environment/props/chair.tscn" id="4_cwn8r"]
+[ext_resource type="PackedScene" uid="uid://cdvem2cqra21t" path="res://environment/rooms/wall_angle.tscn" id="5_knspp"]
+[ext_resource type="PackedScene" uid="uid://gh2a8q2widgc" path="res://environment/rooms/wall_output.tscn" id="6_1d54f"]
+[ext_resource type="PackedScene" uid="uid://qdid32l4kts5" path="res://environment/rooms/wall_inner_angle.tscn" id="7_skvb6"]
+[ext_resource type="PackedScene" uid="uid://c27ow5qa22t3r" path="res://environment/rooms/wall_door.tscn" id="8_lohd0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8fdi"]
+size = Vector3(100, 60, 100)
+
+[node name="Level_4" type="Node3D"]
+script = ExtResource("1_vplpu")
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Water3" parent="Props" instance=ExtResource("2_50m63")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5422, 0.141531, -17.2478)
+
+[node name="Plant7" parent="Props" instance=ExtResource("3_wf03p")]
+transform = Transform3D(0.916963, 0, -0.398973, 0, 1, 0, 0.398973, 0, 0.916963, 16.2045, 0.627948, -12.4029)
+
+[node name="Plant8" parent="Props" instance=ExtResource("3_wf03p")]
+transform = Transform3D(0.16029, 0.000364608, 0.98707, -0.00453793, 0.99999, 0.000367531, -0.98706, -0.00453816, 0.16029, 8.73357, 0.627948, -12.4029)
+
+[node name="Chair8" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13353, 0.115141, -4.00611)
+
+[node name="Chair9" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13353, 0.115141, -5.63953)
+
+[node name="Chair10" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13353, 0.115141, -7.52309)
+
+[node name="Chair11" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13353, 0.115141, -9.29344)
+
+[node name="Chair12" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13353, 0.115141, -11.1039)
+
+[node name="Chair13" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -4.00611)
+
+[node name="Chair14" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -5.63953)
+
+[node name="Chair15" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -7.52309)
+
+[node name="Chair16" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -9.29344)
+
+[node name="Chair17" parent="Props" instance=ExtResource("4_cwn8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -11.1039)
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall Angle" parent="Walls" instance=ExtResource("5_knspp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -5)
+
+[node name="Wall Angle2" parent="Walls" instance=ExtResource("5_knspp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -5)
+
+[node name="Wall Angle3" parent="Walls" instance=ExtResource("5_knspp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -10)
+
+[node name="Wall Angle6" parent="Walls" instance=ExtResource("5_knspp")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10, 0, -25)
+
+[node name="Wall Angle4" parent="Walls" instance=ExtResource("5_knspp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 20, 0, -10)
+
+[node name="Wall Angle5" parent="Walls" instance=ExtResource("5_knspp")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 15, 0, -25)
+
+[node name="Wall Output" parent="Walls" instance=ExtResource("6_1d54f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, -5)
+
+[node name="Wall Inner Angle" parent="Walls" instance=ExtResource("7_skvb6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, -10)
+
+[node name="Wall Inner Angle2" parent="Walls" instance=ExtResource("7_skvb6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0, -10)
+
+[node name="Wall Door" parent="Walls" instance=ExtResource("8_lohd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
+
+[node name="Wall Door2" parent="Walls" instance=ExtResource("8_lohd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -20)
+
+[node name="Wall Door3" parent="Walls" instance=ExtResource("8_lohd0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10, 0, -20)
+
+[node name="Wall Door4" parent="Walls" instance=ExtResource("8_lohd0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10, 0, -15)
+
+[node name="Elevator Position" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.902, 0, 1.12)
+
+[node name="DeadZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeadZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -35, -20)
+shape = SubResource("BoxShape3D_x8fdi")

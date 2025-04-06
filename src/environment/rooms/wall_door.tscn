@@ -9,6 +9,7 @@ data = PackedVector3Array(-0.025, -0.025, 0.0004, -0.025, -0.025, -0.0023, -0.02
 [node name="Wall Door" type="Node3D"]
 
 [node name="wall-door" parent="." instance=ExtResource("1_alr3q")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="wall-door" parent="wall-door" index="0"]
 transform = Transform3D(-100, 1.50996e-05, -2.13163e-12, -7.10543e-13, 5.96046e-06, 100, 1.50996e-05, 100, -1.19209e-05, 0, 0, 0)

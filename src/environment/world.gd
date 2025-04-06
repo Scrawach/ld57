@@ -41,7 +41,7 @@ func _on_lift_dead() -> void:
 	var last_level_index: int = levels.get_child_count() - 1
 	move_to_level(last_level_index)
 
-func move_to_level(level_index: int) -> void:	
+func move_to_level(level_index: int) -> void:
 	living_lift.eat_zone.disable()
 	previous_level = current_level
 	previous_level.disable_dead_zone()

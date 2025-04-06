@@ -8,9 +8,10 @@ data = PackedVector3Array(-0.0047, -0.005, -0.0093, 0.0047, -0.005, -0.0093, 0.0
 [node name="Plant" type="Node3D"]
 
 [node name="plant" parent="." instance=ExtResource("1_f4dfw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14387, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(60, 0, 0, 0, -7.15256e-06, 60, 0, -60, -7.15256e-06, 0, 0, 0)
+transform = Transform3D(60, 0, 0, 0, -7.15256e-06, 60, 0, -60, -7.15256e-06, 0, 1.14387, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_siono")

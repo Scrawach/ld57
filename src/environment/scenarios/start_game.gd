@@ -10,9 +10,9 @@ func execute() -> void:
 		player.phrase.say(dialogue)
 		await wait(2)
 	
-	elevator.open_doors()
 	await show_tooltip("You can walk on [W], [A], [S], [D]", 4)
 	await show_tooltip("[SPACE] for jump", 2)
+	elevator.open_doors()
 
 func get_dialogues() -> Array[String]:
 	return [

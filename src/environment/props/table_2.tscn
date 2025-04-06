@@ -8,9 +8,10 @@ data = PackedVector3Array(-0.0086, -0.0048, 0.0048, 0.0156, -0.0048, 0.0048, 0.0
 [node name="Table-2" type="Node3D"]
 
 [node name="table1" parent="." instance=ExtResource("1_kucbl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47421, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, -2.38419e-05, 100, 0, -100, -2.38419e-05, 0, 0.47421, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qoymq")
