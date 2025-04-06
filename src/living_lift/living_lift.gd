@@ -10,6 +10,7 @@ signal dead()
 @onready var eat_zone: EatZone = $"Eat Zone"
 @onready var doors: Doors = $Doors
 @onready var lever: Lever = $Lever
+@onready var floot_number_label: Label3D = %"Floor Number Label"
 
 var health: ReactiveValue
 var hunger: ReactiveValue
@@ -23,6 +24,9 @@ func _ready() -> void:
 	
 	eat_zone.eated.connect(_on_eated)
 	lever.pressed.connect(func(): want_next_level.emit())
+
+func display_floor(content: String) -> void:
+	floot_number_label.text = content
 
 func open_doors() -> void:
 	doors.open()

@@ -100,11 +100,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.902
 [node name="Level_0" parent="World3D/Levels" instance=ExtResource("6_ehy4j")]
 
 [node name="Level_1" parent="World3D/Levels" instance=ExtResource("6_be11e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -60, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
 visible = false
 
 [node name="Level_2" parent="World3D/Levels" instance=ExtResource("6_be11e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -160, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
 visible = false
 
 [node name="Player" parent="World3D" instance=ExtResource("2_tmo8h")]

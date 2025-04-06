@@ -18,6 +18,13 @@ func _ready() -> void:
 	living_lift.dead.connect(_on_lift_dead)
 	living_lift.open_doors()
 
+func get_house_size() -> int:
+	return levels.get_child_count()
+
+func get_next_floor_number() -> String:
+	var number: int = get_house_size() - current_level_index
+	return str(number)
+
 func _on_want_next_level() -> void:
 	living_lift.close_doors()
 	
@@ -46,6 +53,7 @@ func move_to_level(level_index: int) -> void:
 	current_level.show()
 	living_lift.hunger.current -= 25
 	current_level_index = level_index
+	living_lift.display_floor(get_next_floor_number())
 
 func _on_level_started() -> void:
 	previous_level.hide()
