@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="LiftResoure" load_steps=2 format=3 uid="uid://bxcg8onw2rbii"]
+[gd_resource type="Resource" script_class="LiftResource" load_steps=2 format=3 uid="uid://bxcg8onw2rbii"]
 
 [ext_resource type="Script" path="res://living_lift/lift_resource.gd" id="1_r0oc1"]
 
 [resource]
 script = ExtResource("1_r0oc1")
-startup_health = 50
+startup_health = 100
 max_health = 100
-startup_hunger = 50
+startup_hunger = 0
 max_hunger = 100
