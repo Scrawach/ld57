@@ -1,6 +1,7 @@
 class_name LivingLift
 extends Node3D
 
+
 signal want_next_level()
 signal dead()
 
@@ -23,7 +24,12 @@ func _ready() -> void:
 	dialogue_panel.attach(self)
 	
 	eat_zone.eated.connect(_on_eated)
-	lever.pressed.connect(func(): want_next_level.emit())
+	lever.pressed.connect(func(): 
+		if hunger.current >= config.elevate_hunger_cost:
+			want_next_level.emit())
+
+func cost_for_elevate() -> void:
+	hunger.current -= config.elevate_hunger_cost
 
 func display_floor(content: String) -> void:
 	floot_number_label.text = content

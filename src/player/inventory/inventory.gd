@@ -20,6 +20,10 @@ func is_selected_item() -> bool:
 
 func add_item(item: ItemResource) -> void:
 	items.append(item)
+	
+	if items.size() == 1:
+		select(0)
+	
 	updated.emit()
 
 func pop_selected_item() -> ItemResource:
@@ -27,6 +31,10 @@ func pop_selected_item() -> ItemResource:
 		return null
 	var item = items[selected_item]
 	items.erase(item)
+	
+	if items.size() > 0:
+		select(items.size() - 1)
+	
 	updated.emit()
 	return item
 

@@ -72,3 +72,13 @@ font = ExtResource("4_nr2ag")
 font_size = 80
 outline_size = 24
 script = ExtResource("5_yki23")
+
+[node name="Cost Tooltip" type="Label3D" parent="Tooltip"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.334146, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0, 0.7, 1, 1)
+text = "COST 25 MEAL"
+font = ExtResource("4_nr2ag")
+font_size = 64
+outline_size = 24

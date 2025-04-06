@@ -51,7 +51,7 @@ func move_to_level(level_index: int) -> void:
 	moving.tween_property(living_lift, "global_position", target_level.get_lift_position(), 10)
 	moving.tween_callback(_on_level_started)
 	current_level.show()
-	living_lift.hunger.current -= 25
+	living_lift.cost_for_elevate()
 	current_level_index = level_index
 	living_lift.display_floor(get_next_floor_number())
 

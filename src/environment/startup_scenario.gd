@@ -11,19 +11,24 @@ func execute() -> void:
 	player.set_physics_process(false)
 	
 	await wait(1)
-	player.phrase.say("Doors?..", 1)
+	player.phrase.say("Automated... Doors?..", 1)
 	await wait(1)
 	
 	player_look_to_monitor()
 	await elevator_says(get_startup_panel_text())
-	await wait(1)
+	await wait(2)
 	
 	world.move_to_level(1)
 	player.set_physics_process(true)
 	player.phrase.say("W-where are you going?..")
-	await wait(1)
+	await wait(2)
 	await elevator_says(get_rules_text())
+	player.phrase.say("O-okay...")
 	living_lift.dialogue_panel.show_status()
+	show_tooltip("Find meal on level and feed elevator.", 3)
+	await wait(3)
+	show_tooltip("You can pickup meal on [E]", 2)
+	await wait(2)
 
 func elevator_says(content: Array[String]) -> void:
 	for item in content:
