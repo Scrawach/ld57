@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjsl4ysg5cjw6"]
+
+[ext_resource type="Script" path="res://items/pickup_item.gd" id="1_ft2ml"]
+[ext_resource type="Resource" uid="uid://7yhgotlq0q3o" path="res://items/bomb/bomb_item.tres" id="2_evlis"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="3_pcvkq"]
+[ext_resource type="Script" path="res://environment/floating_label.gd" id="4_p74rd"]
+[ext_resource type="PackedScene" uid="uid://dqy2oxb7haqki" path="res://items/bomb/bomb.fbx" id="5_yvpdp"]
+[ext_resource type="Texture2D" uid="uid://cvbgr5d2f0t2r" path="res://items/particles/stars.png" id="6_737j4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jor0v"]
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyhi1"]
+vertex_color_use_as_albedo = true
+rim_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pf260"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("6_737j4")
+rim_enabled = true
+billboard_mode = 1
+billboard_keep_scale = true
+proximity_fade_distance = 0.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_d2jb3"]
+
+[sub_resource type="Curve" id="Curve_5aqi4"]
+_data = [Vector2(0.00561798, 0.010989), 0.0, 0.0, 0, 0, Vector2(0.522472, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_jo0il"]
+colors = PackedColorArray(1, 0.9, 0, 1, 1, 1, 1, 1)
+
+[node name="Bomb Item" type="Area3D"]
+collision_layer = 3
+monitoring = false
+script = ExtResource("1_ft2ml")
+item = ExtResource("2_evlis")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_jor0v")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+no_depth_test = true
+text = "PICKUP?"
+font = ExtResource("3_pcvkq")
+font_size = 80
+outline_size = 24
+script = ExtResource("4_p74rd")
+
+[node name="Label3D2" type="Label3D" parent="Label3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05387, -0.279448, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0.466181, 0.466181, 0.466181, 1)
+text = "press E"
+font = ExtResource("3_pcvkq")
+font_size = 54
+outline_size = 24
+
+[node name="bomb" parent="." instance=ExtResource("5_yvpdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.163445, 0.113842)
+
+[node name="bomb" parent="bomb" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tyhi1")
+
+[node name="StarsParticles" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_pf260")
+mesh = SubResource("QuadMesh_d2jb3")
+emission_shape = 2
+emission_sphere_radius = 0.5
+direction = Vector3(1, 1, 1)
+spread = 180.0
+gravity = Vector3(0, 1, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_5aqi4")
+color = Color(1, 0.933333, 0, 1)
+color_ramp = SubResource("Gradient_jo0il")
+
+[editable path="bomb"]

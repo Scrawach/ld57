@@ -246,7 +246,7 @@ spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="Camera Root/Camera Yaw/Camera Pitch/SpringArm3D"]
 unique_name_in_owner = true
-transform = Transform3D(0.997124, -0.0751, -0.0101068, 0.0751537, 0.997159, 0.00505274, 0.00969862, -0.00579777, 0.999936, 0, 0, 5)
+transform = Transform3D(0.997124, -0.0751, -0.0101068, 0.0751538, 0.997159, 0.00505274, 0.00969862, -0.00579777, 0.999936, 0, 0, 5)
 current = true
 
 [node name="Camera Shake" type="AnimationPlayer" parent="Camera Root/Camera Yaw/Camera Pitch/SpringArm3D"]

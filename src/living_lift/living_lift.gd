@@ -44,6 +44,9 @@ func close_doors() -> void:
 
 
 func _on_eated(item: ItemResource) -> void:
+	if item.damage_power > 0:
+		Audio.play("res://living_lift/sounds/bomb.mp3", Vector2(0.5, 0.65))
+	
 	hunger.current += item.eat_power
 	health.current -= item.damage_power
 	

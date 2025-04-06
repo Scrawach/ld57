@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c27ow5qa22t3r" path="res://environment/rooms/wall_door.tscn" id="19_pjcjh"]
 [ext_resource type="PackedScene" uid="uid://ba1rkcj2wx78e" path="res://environment/rooms/wall_window.tscn" id="20_04u2w"]
 [ext_resource type="PackedScene" uid="uid://8fseq5e5xwxe" path="res://environment/rooms/ground.tscn" id="21_kj465"]
-[ext_resource type="PackedScene" uid="uid://n6aggx5jnrl2" path="res://items/meal_item.tscn" id="23_ya131"]
+[ext_resource type="PackedScene" uid="uid://n6aggx5jnrl2" path="res://items/meal/meal_item.tscn" id="23_ya131"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8fdi"]
 size = Vector3(100, 60, 100)

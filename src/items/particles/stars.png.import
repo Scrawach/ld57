@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcrc3klrl22m8"
-path.s3tc="res://.godot/imported/bomb-icon.png-7c58c8bb28d317b40d8945ab0800d939.s3tc.ctex"
+uid="uid://cvbgr5d2f0t2r"
+path.s3tc="res://.godot/imported/stars.png-da47df95094785b8742fe8faf12ec3e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://items/icons/bomb-icon.png"
-dest_files=["res://.godot/imported/bomb-icon.png-7c58c8bb28d317b40d8945ab0800d939.s3tc.ctex"]
+source_file="res://items/particles/stars.png"
+dest_files=["res://.godot/imported/stars.png-da47df95094785b8742fe8faf12ec3e5.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

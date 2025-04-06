@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dlhhkficwawa1" path="res://items/icons/meal-icon.png" id="1_w2i4j"]
 [ext_resource type="Script" path="res://items/item_resource.gd" id="2_ausd4"]
-[ext_resource type="PackedScene" uid="uid://o8fq8s6v0qr5" path="res://items/models/meal.fbx" id="2_hvngo"]
+[ext_resource type="PackedScene" uid="uid://o8fq8s6v0qr5" path="res://items/meal/meal.fbx" id="2_hvngo"]
 
 [resource]
 script = ExtResource("2_ausd4")
