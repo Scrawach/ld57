@@ -10,7 +10,7 @@ const RUN_ANIMATION: String = "Armature|Run"
 const JUMP_ANIMATION: String = "Armature|Jump"
 const JUMP_2_ANIMATION: String = "Armature|Jump_001"
 
-@export var camera: Node3D
+@export var camera: CameraRoot
 
 @export var movement_speed: int = 250
 @export var dash_speed: int = 550
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 func _movement_process(delta: float) -> void:
 	var speed = movement_speed
-	var movement_input = get_movement_input(camera)
+	var movement_input = get_movement_input(camera.get_root())
 	
 	if Input.is_action_pressed("dash") and not movement_input.is_zero_approx() and stamina.can_consume(DASH_STAMINA_REQUIRED):
 		speed = dash_speed
@@ -111,7 +111,7 @@ func _animation_process(delta: float) -> void:
 	if is_on_floor() and gravity > 2 and !previously_floored:
 		model.scale = Vector3(1.4, 0.7, 1.4)
 		landing_trail.emitting = true
-		
+		camera.shake_middle()
 	
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)

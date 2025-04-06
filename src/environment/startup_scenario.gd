@@ -8,8 +8,8 @@ extends Scenario
 func execute() -> void:
 	await player_into_elevator()
 	living_lift.close_doors()
+	player.animation.play(player.IDLE_ANIMATION, 0.1)
 	player.set_physics_process(false)
-	
 	await wait(1)
 	player.phrase.say("Automated... Doors?..", 1)
 	await wait(1)
@@ -20,15 +20,22 @@ func execute() -> void:
 	
 	world.move_to_level(1)
 	player.set_physics_process(true)
-	player.phrase.say("W-where are you going?..")
-	await wait(2)
+	player.phrase.say("W-where are you going?..", 4)
+	await wait(4)
 	await elevator_says(get_rules_text())
-	player.phrase.say("O-okay...")
+	player.phrase.say("O-okay...", 2)
 	living_lift.dialogue_panel.show_status()
-	show_tooltip("Find meal on level and feed elevator.", 3)
 	await wait(3)
-	show_tooltip("You can pickup meal on [E]", 2)
-	await wait(2)
+	await show_tooltip("Find meal on level and feed elevator.", 4)
+	await show_tooltip("You can pickup meal on [E]", 4)
+	
+	await while_elevator_eated()
+	await show_tooltip("Use the lever to start the elevator.", 6)
+	await show_tooltip("When the elevator is hungry, it won't move.", 6)
+	await show_tooltip("Use dash [SHIFT] to move quickly.", 6)
+	await show_tooltip("Get to the first floor.", 4)
+	await show_tooltip("Good Luck.", 3)
+	
 
 func elevator_says(content: Array[String]) -> void:
 	for item in content:
@@ -46,6 +53,13 @@ func player_into_elevator() -> void:
 		
 		var distance = player.global_position.distance_to(living_lift.global_position)
 		if distance < 1:
+			return
+
+func while_elevator_eated() -> void:
+	while true:
+		await tick();
+		
+		if living_lift.hunger.current > 0:
 			return
 
 func get_startup_panel_text() -> Array[String]:

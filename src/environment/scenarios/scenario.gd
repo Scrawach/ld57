@@ -14,3 +14,4 @@ func tick() -> Signal:
 
 func show_tooltip(text: String, duration: float = 2) -> void:
 	tooltip.show_text(text, duration)
+	await wait(duration)

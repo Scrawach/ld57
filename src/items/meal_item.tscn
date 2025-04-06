@@ -30,13 +30,13 @@ outline_size = 24
 script = ExtResource("4_b4h2a")
 
 [node name="Label3D2" type="Label3D" parent="Label3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.279448, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05387, -0.279448, 0)
 billboard = 1
 no_depth_test = true
 modulate = Color(0.466181, 0.466181, 0.466181, 1)
 text = "press E"
 font = ExtResource("3_3a5y3")
-font_size = 44
+font_size = 54
 outline_size = 24
 
 [node name="meal" parent="." instance=ExtResource("3_7i1vq")]

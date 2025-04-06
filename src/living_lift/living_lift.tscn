@@ -173,14 +173,25 @@ transform = Transform3D(0.999982, 0, -6.00409e-13, 0, 0.999982, 0, 6.00409e-13, 
 shape = SubResource("BoxShape3D_c5uqo")
 
 [node name="Label3D" type="Label3D" parent="Eat Zone"]
-transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 1.60936, 0)
+transform = Transform3D(1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, 2.32831e-08, 2.0072, 0.545719)
 visible = false
 billboard = 1
 no_depth_test = true
 text = "FEED?"
 font = ExtResource("5_sog1r")
 font_size = 100
+outline_size = 24
 script = ExtResource("6_iiy5w")
+
+[node name="Label3D2" type="Label3D" parent="Eat Zone/Label3D"]
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.0888979, -0.347803, 0)
+billboard = 1
+no_depth_test = true
+modulate = Color(0.4, 0.4, 0.4, 1)
+text = "press [E]"
+font = ExtResource("5_sog1r")
+font_size = 56
+outline_size = 24
 
 [node name="Eating Node Path" type="Node3D" parent="Eat Zone"]
 

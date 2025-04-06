@@ -6,6 +6,8 @@ extends Node3D
 @onready var arm: SpringArm3D = $"Camera Yaw/Camera Pitch/SpringArm3D"
 @onready var yaw_node: Node3D = $"Camera Yaw"
 @onready var pitch_node: Node3D = $"Camera Yaw/Camera Pitch"
+@onready var animation: AnimationPlayer = %"Camera Shake"
+@onready var camera: Camera3D = %Camera3D
 
 var yaw: float 
 var pitch: float = 45
@@ -36,7 +38,6 @@ func _input(event):
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-
 func _physics_process(delta):
 	position_offset = lerp(position_offset, position_offset_target, 4 * delta)
 	global_position = lerp(global_position, player.global_position + position_offset, 18 * delta)
@@ -46,5 +47,8 @@ func _physics_process(delta):
 	yaw_node.rotation_degrees.y = lerp(yaw_node.rotation_degrees.y, yaw, yaw_acceleration * delta)
 	pitch_node.rotation_degrees.x = lerp(pitch_node.rotation_degrees.x, pitch, pitch_acceleration * delta)
 
-func get_camera_rotation() -> float:
-	return yaw_node.rotation_degrees.y
+func shake_middle() -> void:
+	animation.play("middle")
+
+func get_root() -> Node3D:
+	return camera
