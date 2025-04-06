@@ -9,6 +9,7 @@ signal dead()
 @onready var dialogue_panel: DialoguePanel = %"Dialogue Panel"
 @onready var eat_zone: EatZone = $"Eat Zone"
 @onready var doors: Doors = $Doors
+@onready var lever: Lever = $Lever
 
 var health: ReactiveValue
 var hunger: ReactiveValue
@@ -19,6 +20,7 @@ func _ready() -> void:
 	dialogue_panel.attach(self)
 	
 	eat_zone.eated.connect(_on_eated)
+	lever.pressed.connect(func(): want_next_level.emit())
 
 func open_doors() -> void:
 	doors.open()
@@ -37,5 +39,5 @@ func _on_eated(item: ItemResource) -> void:
 		dead.emit()
 		return
 	
-	if hunger.is_full():
-		want_next_level.emit()
+	#if hunger.is_full():
+		#want_next_level.emit()

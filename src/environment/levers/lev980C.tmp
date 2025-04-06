@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqec4ym1lu6bs"]
+
+[ext_resource type="Script" path="res://living_lift/lever.gd" id="1_e1o67"]
+[ext_resource type="PackedScene" uid="uid://dkolpehla507j" path="res://environment/levers/lever-platform.fbx" id="2_r2bdf"]
+[ext_resource type="PackedScene" uid="uid://dkt6klcddcn71" path="res://environment/levers/lever.fbx" id="3_x3wg0"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="4_nr2ag"]
+[ext_resource type="Script" path="res://environment/levers/floating_label.gd" id="5_yki23"]
+
+[sub_resource type="Animation" id="Animation_srcuw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lever:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_locyo"]
+resource_name = "interact"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lever:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0872665, 0, 0), Vector3(-0.785398, 0, 0), Vector3(-0.523599, 6.76218e-09, -2.52368e-08), Vector3(-0.523599, 6.76218e-09, -2.52368e-08), Vector3(0.261799, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjk26"]
+_data = {
+"RESET": SubResource("Animation_srcuw"),
+"interact": SubResource("Animation_locyo")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kb4ln"]
+radius = 1.5
+
+[node name="Lever" type="Area3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_e1o67")
+
+[node name="lever-platform" parent="." instance=ExtResource("2_r2bdf")]
+
+[node name="lever" parent="." instance=ExtResource("3_x3wg0")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hjk26")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kb4ln")
+
+[node name="Tooltip" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2541, 0)
+billboard = 1
+no_depth_test = true
+text = "NEXT FLOOR?"
+font = ExtResource("4_nr2ag")
+font_size = 80
+script = ExtResource("5_yki23")

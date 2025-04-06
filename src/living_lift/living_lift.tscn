@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://6cthiya7h8jg"]
+[gd_scene load_steps=35 format=3 uid="uid://6cthiya7h8jg"]
 
 [ext_resource type="Script" path="res://living_lift/living_lift.gd" id="1_p8bgj"]
 [ext_resource type="Resource" uid="uid://bxcg8onw2rbii" path="res://living_lift/lift_resource.tres" id="2_cjspu"]
 [ext_resource type="PackedScene" uid="uid://dsvuyf2ey8a4h" path="res://living_lift/dialogue_panel.tscn" id="3_uugx3"]
 [ext_resource type="Script" path="res://living_lift/eat_zone.gd" id="4_5xp8e"]
+[ext_resource type="FontFile" uid="uid://fxmst5uq0fee" path="res://fonts/Mario-Party-Hudson-Font.ttf" id="5_sog1r"]
 [ext_resource type="Script" path="res://living_lift/doors.gd" id="5_wkjn2"]
+[ext_resource type="Script" path="res://environment/floating_label.gd" id="6_iiy5w"]
 [ext_resource type="PackedScene" uid="uid://b4hhakye0gboa" path="res://living_lift/models/ground.fbx" id="6_p5hxv"]
 [ext_resource type="PackedScene" uid="uid://dr2juigcabubm" path="res://living_lift/models/elevator-door-right.fbx" id="7_cgcxd"]
 [ext_resource type="PackedScene" uid="uid://cwh5qjy8yl2bb" path="res://living_lift/models/elevator-door-left.fbx" id="8_c8p7u"]
@@ -15,11 +17,40 @@
 [ext_resource type="PackedScene" uid="uid://lape3kchkd1c" path="res://living_lift/models/welcome.fbx" id="13_had43"]
 [ext_resource type="PackedScene" uid="uid://bumvha50vw6of" path="res://living_lift/models/elevator-torch.fbx" id="14_e8bqj"]
 [ext_resource type="PackedScene" uid="uid://cu4anqiy2i61m" path="res://living_lift/models/elevator-torch-open.fbx" id="15_gxrxp"]
+[ext_resource type="PackedScene" uid="uid://bqec4ym1lu6bs" path="res://environment/levers/lever.tscn" id="16_gh2kr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5uqo"]
+size = Vector3(1.57867, 2.03534, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bssn"]
 size = Vector3(0.498535, 4.76044, 4.13177)
+
+[sub_resource type="Animation" id="Animation_0fhan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door Right:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.00370449, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door Left:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.00370449, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wm31p"]
 resource_name = "idle"
@@ -51,33 +82,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0.00370449, 0), Vector3(0, 0.004, -1.6)]
 }
 
-[sub_resource type="Animation" id="Animation_0fhan"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Door Right:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.00370449, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Door Left:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.00370449, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4hwql"]
 _data = {
 "RESET": SubResource("Animation_0fhan"),
@@ -106,6 +110,44 @@ points = PackedVector3Array(0.0292564, 0.00728235, 0.00201159, -0.0245879, -0.00
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_12p6c"]
 points = PackedVector3Array(-0.0140369, -0.00583693, -0.00867722, 0.00739048, 0.00558898, -0.0082029, 0.00739048, -0.00536041, -0.0082029, -0.0140369, -0.0048839, 0.0189381, -0.0140369, 0.00558898, -0.0115351, -0.00356021, 0.00511247, 0.0189381, -0.00356021, -0.00536041, 0.0184608, -0.0140369, 0.00511247, 0.0189381, 0.00739048, -0.00583693, -0.0115381, 0.00643614, -0.00250364, 0.000845094, 0.00739048, 0.00558898, -0.0115381, -0.0140369, -0.00583693, -0.0115351, -0.0135608, 0.0060655, -0.00867722, 0.00643614, 0.00273221, 0.000845094, 0.00691226, 0.0060655, -0.00867722, -0.0140369, -0.00536041, 0.0184608, -0.00356021, -0.0048839, 0.0189381, 0.00739048, -0.00583693, -0.00867722, 0.00643614, -0.00393203, -0.00058385, 0.00643614, 0.0041606, -0.00106116, -0.00403843, -0.00536041, 0.0189381, -0.0135608, -0.00583693, -0.00819991, 0.00691226, -0.00583693, -0.0082029, -0.00213396, 0.00558898, -0.0115381)
 
+[sub_resource type="Animation" id="Animation_tqgwv"]
+resource_name = "open"
+length = 1.00001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator-torch-open:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -3.22886), Vector3(0, 0, -3.07178), Vector3(0, 0, -3.14159)]
+}
+
+[sub_resource type="Animation" id="Animation_vigdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("elevator-torch-open:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_338ws"]
+_data = {
+"RESET": SubResource("Animation_vigdl"),
+"open": SubResource("Animation_tqgwv")
+}
+
 [node name="Living Lift" type="Node3D"]
 transform = Transform3D(1.00236, 0, 0, 0, 1.00236, 0, 0, 0, 1.00236, 0, 0, 0)
 script = ExtResource("1_p8bgj")
@@ -122,14 +164,18 @@ monitoring = false
 script = ExtResource("4_5xp8e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Eat Zone"]
+transform = Transform3D(0.999982, 0, -6.00409e-13, 0, 0.999982, 0, 6.00409e-13, 0, 0.999982, -0.00113115, 0.517664, 0)
 shape = SubResource("BoxShape3D_c5uqo")
 
 [node name="Label3D" type="Label3D" parent="Eat Zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 0, 1.60936, 0)
 visible = false
 billboard = 1
-text = "EAT"
+no_depth_test = true
+text = "FEED?"
+font = ExtResource("5_sog1r")
 font_size = 100
+script = ExtResource("6_iiy5w")
 
 [node name="Doors" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00370449, 0)
@@ -209,7 +255,16 @@ shape = SubResource("ConvexPolygonShape3D_lauaj")
 shape = SubResource("ConvexPolygonShape3D_12p6c")
 
 [node name="elevator-torch-open" parent="Elevator Model/elevator-torch" instance=ExtResource("15_gxrxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36952, 1.12755, 0)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -1.36952, 1.12755, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Elevator Model/elevator-torch"]
+libraries = {
+"": SubResource("AnimationLibrary_338ws")
+}
+speed_scale = 2.0
+
+[node name="Lever" parent="." instance=ExtResource("16_gh2kr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.99529, 0, 1.99529)
 
 [editable path="Doors/Door Right"]
 [editable path="Doors/Door Left"]

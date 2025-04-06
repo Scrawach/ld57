@@ -7,8 +7,8 @@ extends Node3D
 @onready var yaw_node: Node3D = $"Camera Yaw"
 @onready var pitch_node: Node3D = $"Camera Yaw/Camera Pitch"
 
-var yaw: float
-var pitch: float
+var yaw: float 
+var pitch: float = 45
 
 var position_offset : Vector3 = Vector3(0, 1.3, 0)
 var position_offset_target : Vector3 = Vector3(0, 1.3, 0)

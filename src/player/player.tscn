@@ -12,7 +12,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d36ok"]
-radius = 2.0
+radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm2q3"]
 diffuse_mode = 2
@@ -36,7 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mrw3v")
 
 [node name="Interact Zone" type="Area3D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -70,7 +69,6 @@ bones/0/scale = Vector3(1, 0.967492, 1)
 bones/2/position = Vector3(0, 0.00561738, 0)
 bones/3/position = Vector3(0, 0.014217, 0)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
-bones/3/scale = Vector3(1, 1, 1)
 bones/5/rotation = Quaternion(0.366868, -0.182112, 0.516018, -0.752309)
 bones/6/position = Vector3(-2.12396e-10, 0.00834451, 1.30543e-10)
 bones/6/rotation = Quaternion(-0.586653, -0.209401, -0.387664, 0.67949)
@@ -145,7 +143,7 @@ player = NodePath("..")
 [node name="Camera Yaw" type="Node3D" parent="Camera Root"]
 
 [node name="Camera Pitch" type="Node3D" parent="Camera Root/Camera Yaw"]
-transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0, 0, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Camera Root/Camera Yaw/Camera Pitch"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
