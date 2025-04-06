@@ -101,6 +101,7 @@ func _handle_gravity(delta: float) -> void:
 		gravity = 0
 
 func jump():
+	_play_start_jump_sound()
 	gravity = -jump_strength
 	model.scale = Vector3(0.5, 1.4, 0.5)
 
@@ -158,11 +159,12 @@ func _on_interact_zone_area_exited(area: Area3D) -> void:
 func _on_jumping_availability_timeout() -> void:
 	can_jump = is_on_floor()
 
+func _play_start_jump_sound() -> void:
+	Audio.play("res://player/sounds/start_jump.mp3", Vector2(0.75, 0.9))
+
 func _play_landing_sound() -> void:
 	Audio.play("res://player/sounds/landing.mp3", Vector2(0.55, 0.65))
 
 func _on_step() -> void:
-	print("on_step")
 	camera.shake_weak()
 	Audio.play("res://player/sounds/step.mp3", Vector2(0.7, 0.9))
-	
