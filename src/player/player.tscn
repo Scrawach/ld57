@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlo08xmlhe8sf"]
+[gd_scene load_steps=12 format=3 uid="uid://dlo08xmlhe8sf"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ydiw7"]
 [ext_resource type="Script" path="res://player/inventory/inventory.gd" id="2_e6sf5"]
@@ -6,11 +6,22 @@
 [ext_resource type="Script" path="res://player/stamina_control.gd" id="4_2t717"]
 [ext_resource type="PackedScene" uid="uid://b74gpw2vld1en" path="res://environment/world_phrase.tscn" id="5_o2iwf"]
 [ext_resource type="PackedScene" uid="uid://bo5cw3m5hdc6" path="res://player/player.fbx" id="6_pyncv"]
+[ext_resource type="ArrayMesh" uid="uid://csucg8i7w3ry6" path="res://player/Sphere_001.res" id="7_j7nf2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d36ok"]
 radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm2q3"]
+diffuse_mode = 2
+specular_mode = 2
+vertex_color_use_as_albedo = true
+metallic_specular = 0.0
+
+[sub_resource type="Curve" id="Curve_b71u0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.21881, 0.940028), 0.539912, 0.539912, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 5
@@ -23,6 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mrw3v")
 
 [node name="Interact Zone" type="Area3D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -90,6 +102,51 @@ bones/15/rotation = Quaternion(-1.61943e-07, 4.47035e-08, -1.14088e-07, 1)
 
 [node name="AnimationPlayer" parent="Player Model" index="1"]
 speed_scale = 1.5
+
+[node name="Moving Trail" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_hm2q3")
+cast_shadow = 0
+amount = 20
+mesh = ExtResource("7_j7nf2")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0.5, 0)
+angular_velocity_max = 618.67
+angle_max = 360.0
+scale_amount_min = 0.5
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_b71u0")
+
+[node name="Landing Trail" type="CPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_hm2q3")
+cast_shadow = 0
+emitting = false
+amount = 20
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+mesh = ExtResource("7_j7nf2")
+emission_shape = 1
+emission_sphere_radius = 0.2
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_max = 618.67
+linear_accel_min = 6.0
+linear_accel_max = 6.0
+damping_min = 16.0
+damping_max = 16.0
+angle_max = 360.0
+scale_amount_min = 0.2
+scale_amount_max = 0.75
+scale_amount_curve = SubResource("Curve_b71u0")
 
 [connection signal="area_entered" from="Interact Zone" to="." method="_on_interact_zone_area_entered"]
 [connection signal="area_exited" from="Interact Zone" to="." method="_on_interact_zone_area_exited"]

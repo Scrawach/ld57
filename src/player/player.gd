@@ -20,6 +20,8 @@ const JUMP_ANIMATION: String = "Armature|Jump"
 
 @onready var model: Node3D = $"Player Model"
 @onready var animation: AnimationPlayer = $"Player Model/AnimationPlayer"
+@onready var moving_trail: CPUParticles3D = $"Moving Trail"
+@onready var landing_trail: CPUParticles3D = $"Landing Trail"
 
 var gravity: float
 var previously_floored: bool
@@ -80,21 +82,26 @@ func jump():
 	model.scale = Vector3(0.5, 1.4, 0.5)
 
 func _animation_process(delta: float) -> void:
+	moving_trail.emitting = false
 	model.scale = model.scale.lerp(Vector3(1, 1, 1), delta * 8)
 	
 	if is_on_floor() and gravity > 2 and !previously_floored:
 		model.scale = Vector3(1.4, 0.7, 1.4)
-		print("floored!")
+		landing_trail.emitting = true
+		
 	previously_floored = is_on_floor()
 	
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)
 		var speed_factor = horizontal_velocity.length() / movement_speed / delta
-		if speed_factor > 0.1:
+		if speed_factor > 0.05:
 			if animation.current_animation != RUN_ANIMATION:
 				animation.play(RUN_ANIMATION, 0.1)
 		elif animation.current_animation != IDLE_ANIMATION:
 			animation.play(IDLE_ANIMATION, 0.1)
+		
+		if speed_factor > 0.4:
+			moving_trail.emitting = true
 	elif animation.current_animation != JUMP_ANIMATION:
 		animation.play(JUMP_ANIMATION, 0.1)
 
