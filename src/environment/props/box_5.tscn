@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj2sq7eyw6p3r"]
+
+[ext_resource type="PackedScene" uid="uid://ccvoxibnteigw" path="res://environment/props/models/box5.fbx" id="1_ahqjj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_er0bt"]
+size = Vector3(1.68533, 2.51178, 0.996826)
+
+[node name="Box5" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26484, 0)
+
+[node name="box5" parent="." instance=ExtResource("1_ahqjj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117645, 0.042511, -0.107544)
+shape = SubResource("BoxShape3D_er0bt")

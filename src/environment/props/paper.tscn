@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cee28752ggf4t"]
+
+[ext_resource type="PackedScene" uid="uid://csuaympiyib8s" path="res://environment/props/models/paper.fbx" id="1_84mw3"]
+
+[node name="Paper" type="Node3D"]
+
+[node name="paper" parent="." instance=ExtResource("1_84mw3")]

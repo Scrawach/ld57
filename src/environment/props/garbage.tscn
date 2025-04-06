@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do40ygyt21qgv"]
+
+[ext_resource type="PackedScene" uid="uid://jmtrv4fn6u0p" path="res://environment/props/models/garbage.fbx" id="1_n883y"]
+
+[node name="Garbage" type="Node3D"]
+
+[node name="garbage" parent="." instance=ExtResource("1_n883y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0568064, 0)

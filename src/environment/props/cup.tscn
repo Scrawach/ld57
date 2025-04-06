@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvml3cacycsh5"]
+
+[ext_resource type="PackedScene" uid="uid://djdk70x6swuf4" path="res://environment/props/models/cup.fbx" id="1_6r0gx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywbst"]
+size = Vector3(0.124268, 0.18277, 0.145096)
+
+[node name="Cup" type="Node3D"]
+
+[node name="cup" parent="." instance=ExtResource("1_6r0gx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0019556, -0.0325775, -0.000724792)
+shape = SubResource("BoxShape3D_ywbst")

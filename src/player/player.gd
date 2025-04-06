@@ -29,6 +29,11 @@ var previously_floored: bool
 var direction: float
 var nearest_interaction: Interaction
 
+var init_rotation: float
+
+func _ready() -> void:
+	init_rotation = rotation.y
+
 func _physics_process(delta: float) -> void:
 	_interaction_process(delta)
 	_animation_process(delta)
@@ -68,7 +73,7 @@ func get_movement_input(relative: Node3D) -> Vector3:
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
-	#input = input.rotated(Vector3.UP, relative.rotation.y)
+	input = input.rotated(Vector3.UP, relative.global_rotation.y )
 	return input.normalized()
 
 func _handle_gravity(delta: float) -> void:

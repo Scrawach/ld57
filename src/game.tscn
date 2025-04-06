@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://b6rl31un1lcjf"]
+[gd_scene load_steps=33 format=3 uid="uid://b6rl31un1lcjf"]
 
 [ext_resource type="Script" path="res://environment/world.gd" id="1_3ko1t"]
 [ext_resource type="PackedScene" uid="uid://yfjs8g2riw6c" path="res://player/inventory/ui/inventory_control.tscn" id="1_e5p4f"]
 [ext_resource type="PackedScene" uid="uid://6cthiya7h8jg" path="res://living_lift/living_lift.tscn" id="1_u2u37"]
 [ext_resource type="PackedScene" uid="uid://cu1sy3dij4mv2" path="res://monsters/monster.tscn" id="2_74s4o"]
 [ext_resource type="PackedScene" uid="uid://dlo08xmlhe8sf" path="res://player/player.tscn" id="2_tmo8h"]
-[ext_resource type="Script" path="res://environment/following_camera.gd" id="2_v2k5q"]
 [ext_resource type="Script" path="res://environment/level.gd" id="3_502l8"]
 [ext_resource type="PackedScene" uid="uid://bfd4d67pvnf0y" path="res://items/pickup_item.tscn" id="4_yibxu"]
 [ext_resource type="PackedScene" uid="uid://8fseq5e5xwxe" path="res://environment/rooms/ground.tscn" id="6_7j3xq"]
@@ -15,6 +14,21 @@
 [ext_resource type="PackedScene" uid="uid://c27ow5qa22t3r" path="res://environment/rooms/wall_door.tscn" id="9_oxnfj"]
 [ext_resource type="PackedScene" uid="uid://ba1rkcj2wx78e" path="res://environment/rooms/wall_window.tscn" id="10_nu74e"]
 [ext_resource type="PackedScene" uid="uid://gh2a8q2widgc" path="res://environment/rooms/wall_output.tscn" id="11_7b16l"]
+[ext_resource type="PackedScene" uid="uid://c4jxowu3e1hfv" path="res://environment/props/table.tscn" id="15_l6q5q"]
+[ext_resource type="PackedScene" uid="uid://c7ri3pdtngeob" path="res://environment/props/chair.tscn" id="16_t7cwb"]
+[ext_resource type="PackedScene" uid="uid://ddg3xa2ofdwwp" path="res://environment/props/water.tscn" id="17_p3oyy"]
+[ext_resource type="PackedScene" uid="uid://pp83dkqi503t" path="res://environment/props/plant.tscn" id="18_xry80"]
+[ext_resource type="PackedScene" uid="uid://hi13qt5n7hme" path="res://environment/props/plant_2.tscn" id="19_b7mkb"]
+[ext_resource type="PackedScene" uid="uid://b7hyfs5ufbse0" path="res://environment/props/desk.tscn" id="20_laokn"]
+[ext_resource type="PackedScene" uid="uid://jx377n4ow4t4" path="res://environment/props/many_papers.tscn" id="21_fssha"]
+[ext_resource type="PackedScene" uid="uid://cvml3cacycsh5" path="res://environment/props/cup.tscn" id="22_h40d3"]
+[ext_resource type="PackedScene" uid="uid://c2f43eicmnq4n" path="res://environment/props/plate.tscn" id="23_yu010"]
+[ext_resource type="PackedScene" uid="uid://cee28752ggf4t" path="res://environment/props/paper.tscn" id="24_6ofm3"]
+[ext_resource type="PackedScene" uid="uid://cgoqokroanam8" path="res://environment/props/box_3.tscn" id="25_t80eh"]
+[ext_resource type="PackedScene" uid="uid://0ymu1dh3qn4x" path="res://environment/props/box_1.tscn" id="26_304v6"]
+[ext_resource type="PackedScene" uid="uid://do40ygyt21qgv" path="res://environment/props/garbage.tscn" id="27_nxro7"]
+[ext_resource type="PackedScene" uid="uid://bj2sq7eyw6p3r" path="res://environment/props/box_5.tscn" id="28_6oda5"]
+[ext_resource type="PackedScene" uid="uid://cquk22umroi0y" path="res://environment/props/box.tscn" id="29_jj2qv"]
 
 [sub_resource type="Environment" id="Environment_cpbav"]
 background_mode = 1
@@ -93,120 +107,271 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.901
 
 [node name="Levels" type="Node3D" parent="World3D"]
 
-[node name="Node3D" type="Node3D" parent="World3D/Levels"]
+[node name="Location" type="Node3D" parent="World3D/Levels"]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World3D/Levels/Node3D"]
+[node name="Props" type="Node3D" parent="World3D/Levels/Location"]
 
-[node name="Start Level" type="Node3D" parent="World3D/Levels"]
+[node name="Table" parent="World3D/Levels/Location/Props" instance=ExtResource("15_l6q5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75075, 0.110001, -31.6843)
 
-[node name="Wall Angle" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Table2" parent="World3D/Levels/Location/Props" instance=ExtResource("15_l6q5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.75075, 0.110001, -26.6843)
+
+[node name="Table3" parent="World3D/Levels/Location/Props" instance=ExtResource("15_l6q5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7507, 0.110001, -26.6843)
+
+[node name="Table4" parent="World3D/Levels/Location/Props" instance=ExtResource("15_l6q5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7507, 0.110001, -31.6843)
+
+[node name="Chair" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.20086, 0.11514, -30.0671)
+
+[node name="Chair2" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0442, 0.11514, -31.4063)
+
+[node name="Chair3" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9385, 0.11514, -30.1003)
+
+[node name="Chair4" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12786, 0.11514, -25.0965)
+
+[node name="Chair5" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.45273, 0.11514, -28.4687)
+
+[node name="Chair6" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7722, 0.11514, -25.1773)
+
+[node name="Chair7" parent="World3D/Levels/Location/Props" instance=ExtResource("16_t7cwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5482, 0.11514, -26.7603)
+
+[node name="Water" parent="World3D/Levels/Location/Props" instance=ExtResource("17_p3oyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48669, 0.131646, -36.4803)
+
+[node name="Water2" parent="World3D/Levels/Location/Props" instance=ExtResource("17_p3oyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4436, 0.131646, -36.4803)
+
+[node name="Water3" parent="World3D/Levels/Location/Props" instance=ExtResource("17_p3oyy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5422, 0.141531, -17.2478)
+
+[node name="Plant" parent="World3D/Levels/Location/Props" instance=ExtResource("18_xry80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3532, 1.22278, -36.6016)
+
+[node name="Plant2" parent="World3D/Levels/Location/Props" instance=ExtResource("18_xry80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4288, 1.22278, -36.6016)
+
+[node name="Plant3" parent="World3D/Levels/Location/Props" instance=ExtResource("18_xry80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.41149, 1.22278, -36.6016)
+
+[node name="Plant4" parent="World3D/Levels/Location/Props" instance=ExtResource("18_xry80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.56933, 1.22278, -36.6016)
+
+[node name="Plant5" parent="World3D/Levels/Location/Props" instance=ExtResource("19_b7mkb")]
+transform = Transform3D(0.846806, 0, 0.531901, 0, 1, 0, -0.531901, 0, 0.846806, 8.61576, 0.627948, -22.4029)
+
+[node name="Plant6" parent="World3D/Levels/Location/Props" instance=ExtResource("19_b7mkb")]
+transform = Transform3D(0.804147, 0, -0.59443, 0, 1, 0, 0.59443, 0, 0.804147, 16.2045, 0.627948, -22.4029)
+
+[node name="Plant7" parent="World3D/Levels/Location/Props" instance=ExtResource("19_b7mkb")]
+transform = Transform3D(0.916963, 0, -0.398973, 0, 1, 0, 0.398973, 0, 0.916963, 16.2045, 0.627948, -12.4029)
+
+[node name="Plant8" parent="World3D/Levels/Location/Props" instance=ExtResource("19_b7mkb")]
+transform = Transform3D(0.16029, 0.000364608, 0.98707, -0.00453793, 0.99999, 0.000367531, -0.98706, -0.00453816, 0.16029, 8.73357, 0.627948, -12.4029)
+
+[node name="Desk" parent="World3D/Levels/Location/Props" instance=ExtResource("20_laokn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9056, 2.94148, -37.034)
+
+[node name="Many Papers" parent="World3D/Levels/Location/Props/Desk" instance=ExtResource("21_fssha")]
+
+[node name="Desk2" parent="World3D/Levels/Location/Props" instance=ExtResource("20_laokn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98099, 2.94148, -37.034)
+
+[node name="Many Papers" parent="World3D/Levels/Location/Props/Desk2" instance=ExtResource("21_fssha")]
+
+[node name="Cup" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1303, 1.21013, -31.7917)
+
+[node name="Cup2" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9693, 1.21013, -31.3968)
+
+[node name="Cup3" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8243, 1.21013, -27.1006)
+
+[node name="Cup4" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3355, 1.21013, -26.5986)
+
+[node name="Cup5" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.40228, 1.21013, -27.1852)
+
+[node name="Cup6" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25419, 1.21013, -26.4426)
+
+[node name="Cup7" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28086, 1.21013, -31.5265)
+
+[node name="Plate" parent="World3D/Levels/Location/Props" instance=ExtResource("23_yu010")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.99442, 1.14046, -26.5646)
+
+[node name="Plate2" parent="World3D/Levels/Location/Props" instance=ExtResource("23_yu010")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18073, 1.14046, -31.5697)
+
+[node name="Plate3" parent="World3D/Levels/Location/Props" instance=ExtResource("23_yu010")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6581, 1.14046, -32.0648)
+
+[node name="Plate4" parent="World3D/Levels/Location/Props" instance=ExtResource("23_yu010")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1226, 1.14046, -26.6738)
+
+[node name="Paper" parent="World3D/Levels/Location/Props" instance=ExtResource("24_6ofm3")]
+transform = Transform3D(0.814359, 0, -0.580362, 0, 1, 0, 0.580362, 0, 0.814359, 17.8425, 1.11227, -26.8332)
+
+[node name="Paper2" parent="World3D/Levels/Location/Props" instance=ExtResource("24_6ofm3")]
+transform = Transform3D(0.987778, 0, 0.155866, 0, 1, 0, -0.155866, 0, 0.987778, 18.4849, 1.11227, -27.064)
+
+[node name="Paper3" parent="World3D/Levels/Location/Props" instance=ExtResource("24_6ofm3")]
+transform = Transform3D(0.93558, 0, 0.353116, 0, 1, 0, -0.353116, 0, 0.93558, 17.5743, 1.13972, -27.0125)
+
+[node name="Paper4" parent="World3D/Levels/Location/Props" instance=ExtResource("24_6ofm3")]
+transform = Transform3D(0.929107, 0, -0.369812, 0, 1, 0, 0.369812, 0, 0.929107, 18.1473, 1.13972, -27.1306)
+
+[node name="Paper5" parent="World3D/Levels/Location/Props" instance=ExtResource("24_6ofm3")]
+transform = Transform3D(0.929107, 0, -0.369812, 0, 1, 0, 0.369812, 0, 0.929107, 18.3436, 1.13972, -31.7972)
+
+[node name="Paper6" parent="World3D/Levels/Location/Props" instance=ExtResource("24_6ofm3")]
+transform = Transform3D(0.985683, 0, 0.16861, 0, 1, 0, -0.16861, 0, 0.985683, 18.7287, 1.13972, -31.606)
+
+[node name="Box3" parent="World3D/Levels/Location/Props" instance=ExtResource("25_t80eh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.30859, 0.0768289, -23.4918)
+
+[node name="Box1" parent="World3D/Levels/Location/Props" instance=ExtResource("26_304v6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.78544, 0.11, -24.4735)
+
+[node name="Box2" parent="World3D/Levels/Location/Props" instance=ExtResource("26_304v6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.78544, 0.11, -25.2517)
+
+[node name="Box4" parent="World3D/Levels/Location/Props" instance=ExtResource("26_304v6")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.78544, 0.11, -26.0471)
+
+[node name="Garbage" parent="World3D/Levels/Location/Props" instance=ExtResource("27_nxro7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51681, 1.74058, -24.4478)
+
+[node name="Garbage2" parent="World3D/Levels/Location/Props" instance=ExtResource("27_nxro7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22784, 1.74058, -24.6413)
+
+[node name="Garbage3" parent="World3D/Levels/Location/Props" instance=ExtResource("27_nxro7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53382, 1.74058, -24.9142)
+
+[node name="Garbage4" parent="World3D/Levels/Location/Props" instance=ExtResource("27_nxro7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22477, 1.74058, -25.7586)
+
+[node name="Garbage5" parent="World3D/Levels/Location/Props" instance=ExtResource("27_nxro7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.56903, 1.74058, -25.8293)
+
+[node name="Desk3" parent="World3D/Levels/Location/Props" instance=ExtResource("20_laokn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.97485, 2.83595, -25.1673)
+
+[node name="Cup8" parent="World3D/Levels/Location/Props" instance=ExtResource("22_h40d3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.78881, 1.85383, -25.3236)
+
+[node name="Box5" parent="World3D/Levels/Location/Props" instance=ExtResource("28_6oda5")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.52133, 1.37484, -27.3463)
+
+[node name="Box6" parent="World3D/Levels/Location/Props" instance=ExtResource("25_t80eh")]
+transform = Transform3D(0.0718456, 0, 0.997416, 0, 1, 0, -0.997416, 0, 0.0718456, 3.61723, 0.11, -31.4202)
+
+[node name="Box" parent="World3D/Levels/Location/Props" instance=ExtResource("29_jj2qv")]
+transform = Transform3D(-0.063348, 0, 0.997992, 0, 1, 0, -0.997992, 0, -0.063348, 3.72374, 0.11, -32.5342)
+
+[node name="Walls" type="Node3D" parent="World3D/Levels/Location"]
+
+[node name="Wall Angle" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -5)
 
-[node name="Wall Angle2" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle2" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -5)
 
-[node name="Wall Angle3" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle3" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -10)
 
-[node name="Wall Angle4" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle4" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 20, 0, -10)
 
-[node name="Wall Output" parent="World3D/Levels/Start Level" instance=ExtResource("11_7b16l")]
+[node name="Wall Output" parent="World3D/Levels/Location/Walls" instance=ExtResource("11_7b16l")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, -5)
 
-[node name="Wall Inner Angle" parent="World3D/Levels/Start Level" instance=ExtResource("9_cegp4")]
+[node name="Wall Inner Angle" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_cegp4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, -10)
 
-[node name="Wall Inner Angle2" parent="World3D/Levels/Start Level" instance=ExtResource("9_cegp4")]
+[node name="Wall Inner Angle2" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_cegp4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10, 0, -10)
 
-[node name="Wall Door" parent="World3D/Levels/Start Level" instance=ExtResource("9_oxnfj")]
+[node name="Wall Door" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_oxnfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
 
-[node name="Wall Door2" parent="World3D/Levels/Start Level" instance=ExtResource("9_oxnfj")]
+[node name="Wall Door2" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_oxnfj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -20)
 
-[node name="Wall Door3" parent="World3D/Levels/Start Level" instance=ExtResource("9_oxnfj")]
+[node name="Wall Door3" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_oxnfj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10, 0, -20)
 
-[node name="Wall Door4" parent="World3D/Levels/Start Level" instance=ExtResource("9_oxnfj")]
+[node name="Wall Door4" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_oxnfj")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10, 0, -15)
 
-[node name="Wall Window" parent="World3D/Levels/Start Level" instance=ExtResource("10_nu74e")]
+[node name="Wall Window" parent="World3D/Levels/Location/Walls" instance=ExtResource("10_nu74e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, -35)
 
-[node name="Wall Window3" parent="World3D/Levels/Start Level" instance=ExtResource("10_nu74e")]
+[node name="Wall Window3" parent="World3D/Levels/Location/Walls" instance=ExtResource("10_nu74e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, -30)
 
-[node name="Wall Window4" parent="World3D/Levels/Start Level" instance=ExtResource("10_nu74e")]
+[node name="Wall Window4" parent="World3D/Levels/Location/Walls" instance=ExtResource("10_nu74e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -30)
 
-[node name="Wall Window2" parent="World3D/Levels/Start Level" instance=ExtResource("10_nu74e")]
+[node name="Wall Window2" parent="World3D/Levels/Location/Walls" instance=ExtResource("10_nu74e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, -35)
 
-[node name="Wall Inner Angle3" parent="World3D/Levels/Start Level" instance=ExtResource("9_cegp4")]
+[node name="Wall Inner Angle3" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_cegp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -25)
 
-[node name="Wall Inner Angle4" parent="World3D/Levels/Start Level" instance=ExtResource("9_cegp4")]
+[node name="Wall Inner Angle4" parent="World3D/Levels/Location/Walls" instance=ExtResource("9_cegp4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10, 0, -25)
 
-[node name="Wall Angle5" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle5" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -25)
 
-[node name="Wall Angle6" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle6" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -25)
 
-[node name="Wall Angle7" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle7" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 0, -35)
 
-[node name="Wall Angle8" parent="World3D/Levels/Start Level" instance=ExtResource("8_kniiv")]
+[node name="Wall Angle8" parent="World3D/Levels/Location/Walls" instance=ExtResource("8_kniiv")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5, 0, -35)
 
-[node name="Ground" parent="World3D/Levels/Start Level" instance=ExtResource("6_7j3xq")]
+[node name="Ground" parent="World3D/Levels/Location/Walls" instance=ExtResource("6_7j3xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
 
-[node name="Ground2" parent="World3D/Levels/Start Level" instance=ExtResource("6_7j3xq")]
+[node name="Ground2" parent="World3D/Levels/Location/Walls" instance=ExtResource("6_7j3xq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -30)
 
-[node name="Player" parent="World3D" node_paths=PackedStringArray("camera") instance=ExtResource("2_tmo8h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9937, 3, 0.51475)
-camera = NodePath("../../Camera3D")
+[node name="Player" parent="World3D" instance=ExtResource("2_tmo8h")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 12.9937, 3, 0.51475)
+movement_speed = 400
+dash_speed = 700
 
 [node name="Skeleton3D" parent="World3D/Player/Player Model/Armature" index="0"]
-bones/0/scale = Vector3(1, 1.08186, 1)
 bones/1/position = Vector3(0, 0.0164827, 0)
-bones/2/position = Vector3(0, 0.00561738, 0)
 bones/2/rotation = Quaternion(0, 0, 0, 1)
-bones/3/position = Vector3(0, 0.014217, 0)
 bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/5/position = Vector3(0.00745305, 0.0087154, 1.92574e-09)
 bones/5/rotation = Quaternion(0.617176, 0.617176, 0.345099, -0.345099)
-bones/5/scale = Vector3(1, 1, 1)
-bones/6/position = Vector3(-2.12396e-10, 0.00834451, 1.30543e-10)
 bones/6/rotation = Quaternion(1.34309e-14, 8.74567e-08, 2.13371e-14, 1)
-bones/6/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(-0.00745305, 0.0087154, 1.92574e-09)
 bones/8/rotation = Quaternion(0.617176, -0.617176, -0.345099, -0.345099)
-bones/8/scale = Vector3(1, 1, 1)
-bones/9/position = Vector3(2.12396e-10, 0.00834451, 1.30543e-10)
 bones/9/rotation = Quaternion(1.34309e-14, -8.74567e-08, -2.13371e-14, 1)
-bones/9/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(0.00601977, 0.0201376, 4.91063e-10)
 bones/11/rotation = Quaternion(0.872819, 1.69561e-07, 0.488044, -2.34542e-07)
-bones/12/position = Vector3(-7.66591e-11, 0.00920448, -4.00317e-10)
 bones/12/rotation = Quaternion(-1.61943e-07, -4.0624e-08, 1.14088e-07, 1)
 bones/14/position = Vector3(-0.00601977, 0.0201376, 4.91063e-10)
 bones/14/rotation = Quaternion(0.872819, -1.69561e-07, -0.488044, -2.34542e-07)
-bones/15/position = Vector3(7.66591e-11, 0.00920448, -4.00317e-10)
 bones/15/rotation = Quaternion(-1.61943e-07, 4.0624e-08, -1.14088e-07, 1)
-
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(0.866025, -0.380475, 0.324406, -6.05452e-08, 0.648811, 0.76095, -0.5, -0.659002, 0.561886, 15.3149, 7.32656, 3.71395)
-size = 10.0
-script = ExtResource("2_v2k5q")
-target = NodePath("../World3D/Player")
-offset = Vector3(-5, 5, 5)
-get_offset_on_ready = true
 
 [node name="Canvas" type="CanvasLayer" parent="."]
 

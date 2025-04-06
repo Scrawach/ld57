@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds6xyie6i6y5a"]
+
+[ext_resource type="PackedScene" uid="uid://5ibegr1kknlh" path="res://environment/props/models/book1.fbx" id="1_whoso"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmxsr"]
+size = Vector3(0.0915527, 0.418884, 0.302338)
+
+[node name="Book1" type="Node3D"]
+
+[node name="book1" parent="." instance=ExtResource("1_whoso")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00231934, 0.00332642, 0.0075531)
+shape = SubResource("BoxShape3D_vmxsr")

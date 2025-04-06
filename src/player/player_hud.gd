@@ -8,7 +8,6 @@ extends Node3D
 @onready var progress_bar: ProgressBar = %"Stamina Progress Bar"
 @onready var timer: Timer = $Timer
 
-var tween: Tween
 
 func _ready() -> void:
 	stamina.changed.connect(_on_stamina_changed)
@@ -18,13 +17,8 @@ func _ready() -> void:
 	progress_bar.max_value = stamina.max
 
 func _on_stamina_changed(current: int, max: int) -> void:
-	if tween:
-		tween.kill()
-	
-	tween = create_tween()
-	tween.tween_property(progress_bar, "value", current, smooth_duration)
-	tween.parallel().tween_property(progress_bar, "max_value", max, smooth_duration)
-	
+	progress_bar.value = current
+	progress_bar.max_value = max
 	timer.start()
 	render.show()
 

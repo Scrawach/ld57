@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://hi13qt5n7hme"]
+
+[ext_resource type="PackedScene" uid="uid://l6cvnucj04e0" path="res://environment/props/models/plant1.fbx" id="1_ltkpo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwhbd"]
+size = Vector3(1, 0.744141, 1)
+
+[node name="Plant2" type="Node3D"]
+
+[node name="plant1" parent="." instance=ExtResource("1_ltkpo")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12793, 0)
+shape = SubResource("BoxShape3D_kwhbd")
+
+[editable path="plant1"]
