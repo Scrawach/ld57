@@ -28,7 +28,7 @@ func _on_timer_timeout() -> void:
 func shake() -> void:
 	if tween:
 		tween.kill()
-	
+	Audio.play("res://environment/ui/sounds/pop2.mp3")
 	self.scale = Vector2.ZERO
 	tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ONE, 0.4).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SPRING)

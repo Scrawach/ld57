@@ -56,6 +56,8 @@ func animate_eating(item: ItemResource, player: Node3D) -> void:
 		tween.tween_property(model, "position", marker.position, 0.2)
 		tween.set_ease(Tween.EASE_IN_OUT)
 	
+	tween.tween_callback(func():
+		Audio.play("res://living_lift/sounds/eat.mp3", Vector2(0.66, 0.8)))
 	tween.tween_property(model, "scale", Vector3.ZERO, 0.25)
 	tween.tween_callback(func():
 		eat_awaiting_timer.start()

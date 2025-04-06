@@ -13,10 +13,9 @@ var moving: Tween
 
 func _ready() -> void:
 	current_level = levels.get_child(0) as Level
-	
 	living_lift.want_next_level.connect(_on_want_next_level)
 	living_lift.dead.connect(_on_lift_dead)
-	living_lift.open_doors()
+	living_lift.display_floor(get_next_floor_number())
 
 func get_house_size() -> int:
 	return levels.get_child_count()
@@ -53,8 +52,8 @@ func move_to_level(level_index: int) -> void:
 	current_level.show()
 	living_lift.cost_for_elevate()
 	current_level_index = level_index
-	living_lift.display_floor(get_next_floor_number())
 
 func _on_level_started() -> void:
 	previous_level.hide()
 	living_lift.open_doors()
+	living_lift.display_floor(get_next_floor_number())

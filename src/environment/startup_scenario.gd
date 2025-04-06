@@ -16,7 +16,6 @@ func execute() -> void:
 	
 	player_look_to_monitor()
 	await elevator_says(get_startup_panel_text())
-	await wait(2)
 	
 	world.move_to_level(1)
 	player.set_physics_process(true)
@@ -52,7 +51,7 @@ func player_into_elevator() -> void:
 		await tick()
 		
 		var distance = player.global_position.distance_to(living_lift.global_position)
-		if distance < 1:
+		if distance < 2:
 			return
 
 func while_elevator_eated() -> void:

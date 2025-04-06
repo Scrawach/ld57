@@ -18,4 +18,5 @@ func interact(player: Player) -> void:
 		return
 	
 	inventory.add_item(item)
+	Audio.play("res://items/sound/pickup.mp3", Vector2(0.8, 0.9))
 	queue_free()

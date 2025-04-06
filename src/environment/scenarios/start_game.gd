@@ -1,6 +1,7 @@
 extends Scenario
 
 @export var player: Player
+@export var elevator: LivingLift
 
 func execute() -> void:
 	await wait(1)
@@ -9,6 +10,7 @@ func execute() -> void:
 		player.phrase.say(dialogue)
 		await wait(2)
 	
+	elevator.open_doors()
 	await show_tooltip("You can walk on [W], [A], [S], [D]", 4)
 	await show_tooltip("[SPACE] for jump", 2)
 

@@ -50,5 +50,8 @@ func _physics_process(delta):
 func shake_middle() -> void:
 	animation.play("middle")
 
+func shake_weak() -> void:
+	animation.play("weak")
+
 func get_root() -> Node3D:
 	return camera

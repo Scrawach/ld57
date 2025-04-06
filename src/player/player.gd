@@ -112,6 +112,7 @@ func _animation_process(delta: float) -> void:
 		model.scale = Vector3(1.4, 0.7, 1.4)
 		landing_trail.emitting = true
 		camera.shake_middle()
+		_play_landing_sound()
 	
 	if is_on_floor():
 		var horizontal_velocity = Vector2(velocity.x, velocity.z)
@@ -156,3 +157,11 @@ func _on_interact_zone_area_exited(area: Area3D) -> void:
 
 func _on_jumping_availability_timeout() -> void:
 	can_jump = is_on_floor()
+
+func _play_landing_sound() -> void:
+	Audio.play("res://player/sounds/landing.mp3", Vector2(0.55, 0.65))
+
+func _on_step() -> void:
+	camera.shake_weak()
+	Audio.play("res://player/sounds/step.mp3", Vector2(0.7, 0.9))
+	

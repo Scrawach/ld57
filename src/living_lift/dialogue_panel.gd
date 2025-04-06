@@ -10,7 +10,7 @@ extends Node3D
 func show_text(text: String) -> void:
 	label.show()
 	status.hide()
-	
+	Audio.play("res://living_lift/sounds/show_text.mp3", Vector2(0.55, 0.65))
 	label.text = text
 
 func hide_status() -> void:
