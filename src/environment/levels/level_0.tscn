@@ -1,5 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://oliimtydwxat"]
+[gd_scene load_steps=24 format=3 uid="uid://oliimtydwxat"]
 
+[ext_resource type="Script" path="res://environment/levels/level.gd" id="1_tepbp"]
 [ext_resource type="PackedScene" uid="uid://c4jxowu3e1hfv" path="res://environment/props/table.tscn" id="1_uegw7"]
 [ext_resource type="PackedScene" uid="uid://c7ri3pdtngeob" path="res://environment/props/chair.tscn" id="2_1xjt3"]
 [ext_resource type="PackedScene" uid="uid://ddg3xa2ofdwwp" path="res://environment/props/water.tscn" id="3_foltf"]
@@ -22,7 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://ba1rkcj2wx78e" path="res://environment/rooms/wall_window.tscn" id="20_04u2w"]
 [ext_resource type="PackedScene" uid="uid://8fseq5e5xwxe" path="res://environment/rooms/ground.tscn" id="21_kj465"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8fdi"]
+size = Vector3(100, 1, 100)
+
 [node name="Level_0" type="Node3D"]
+script = ExtResource("1_tepbp")
 
 [node name="Props" type="Node3D" parent="."]
 
@@ -295,3 +300,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -30)
 
 [node name="Ground2" parent="Walls" instance=ExtResource("21_kj465")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -30)
+
+[node name="Elevator Position" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3248, 0, 0)
+
+[node name="DeadZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeadZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+shape = SubResource("BoxShape3D_x8fdi")
