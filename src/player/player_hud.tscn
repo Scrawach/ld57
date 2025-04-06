@@ -30,6 +30,7 @@ script = ExtResource("1_wcpbh")
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 2.79281, 0)
 visible = false
 billboard = 1
+no_depth_test = true
 texture = SubResource("ViewportTexture_jicl0")
 region_rect = Rect2(1.665, 0, 0, 0)
 

@@ -12,12 +12,13 @@ var current_level_index: int = 0
 var moving: Tween
 
 func _ready() -> void:
-	player.get_parent().remove_child(player)
-	living_lift.add_child(player)
+	#player.get_parent().remove_child(player)
+	#living_lift.add_child(player)
 	current_level = levels.get_child(0) as Level
 	
 	living_lift.want_next_level.connect(_on_want_next_level)
 	living_lift.dead.connect(_on_lift_dead)
+	living_lift.open_doors()
 
 func _on_want_next_level() -> void:
 	living_lift.close_doors()

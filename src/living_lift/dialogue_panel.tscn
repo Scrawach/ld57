@@ -18,6 +18,7 @@ border_width_left = 30
 border_width_top = 30
 border_width_right = 30
 border_width_bottom = 30
+border_color = Color(0.094674, 0.160033, 0.231524, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50

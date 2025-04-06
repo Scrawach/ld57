@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_r0oc1")
-startup_health = 100
+startup_health = 50
 max_health = 100
-startup_hunger = 0
+startup_hunger = 50
 max_hunger = 100
