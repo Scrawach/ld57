@@ -1,16 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlo08xmlhe8sf"]
+[gd_scene load_steps=9 format=3 uid="uid://dlo08xmlhe8sf"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ydiw7"]
 [ext_resource type="Script" path="res://player/inventory/inventory.gd" id="2_e6sf5"]
 [ext_resource type="Script" path="res://player/stamina.gd" id="3_dtf2r"]
 [ext_resource type="Script" path="res://player/stamina_control.gd" id="4_2t717"]
 [ext_resource type="PackedScene" uid="uid://b74gpw2vld1en" path="res://environment/world_phrase.tscn" id="5_o2iwf"]
+[ext_resource type="PackedScene" uid="uid://bo5cw3m5hdc6" path="res://player/player.fbx" id="6_pyncv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mrw3v"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_fm8i8"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_pyvwc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d36ok"]
 radius = 2.0
@@ -18,18 +15,12 @@ radius = 2.0
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 5
 script = ExtResource("1_ydiw7")
+movement_speed = 300
+dash_speed = 600
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_mrw3v")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_fm8i8")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.778055, 0, 0, 0, 0.335436, 0, 0, 0, 0.500199, 0, 0.495081, 0.361226)
-mesh = SubResource("BoxMesh_pyvwc")
 
 [node name="Interact Zone" type="Area3D" parent="."]
 collision_layer = 2
@@ -68,5 +59,39 @@ stamina = NodePath("../Stamina")
 [node name="World Phrase" parent="." instance=ExtResource("5_o2iwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
+[node name="Player Model" parent="." instance=ExtResource("6_pyncv")]
+
+[node name="Skeleton3D" parent="Player Model/Armature" index="0"]
+bones/0/scale = Vector3(1, 1.08186, 1)
+bones/2/position = Vector3(0, 0.00561738, 0)
+bones/2/rotation = Quaternion(-0.173648, 1.90511e-24, -3.85576e-17, 0.984808)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(0, 0.014217, 0)
+bones/3/rotation = Quaternion(0.130526, 2.72064e-24, 2.89826e-17, 0.991445)
+bones/3/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(0.00745305, 0.00718099, 0.00327442)
+bones/5/rotation = Quaternion(0.804586, 0.476555, 0.268951, 0.230657)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(-2.12396e-10, 0.00834451, 1.30543e-10)
+bones/6/rotation = Quaternion(-0.446473, -0.0890501, -0.00376004, 0.890347)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(-0.00745305, 0.00718099, 0.00327442)
+bones/8/rotation = Quaternion(0.794278, -0.460026, -0.271866, 0.289115)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(2.12396e-10, 0.00834451, 1.30543e-10)
+bones/9/rotation = Quaternion(-0.381453, 0.0989369, -0.0565517, 0.917337)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.872819, 1.20876e-07, 0.488044, -1.47474e-07)
+bones/12/position = Vector3(-7.66591e-11, 0.00920448, -4.00317e-10)
+bones/12/rotation = Quaternion(-1.61943e-07, -4.47035e-08, 1.14088e-07, 1)
+bones/14/rotation = Quaternion(0.872819, -1.20876e-07, -0.488044, -1.47474e-07)
+bones/15/position = Vector3(7.66591e-11, 0.00920448, -4.00317e-10)
+bones/15/rotation = Quaternion(-1.61943e-07, 4.47035e-08, -1.14088e-07, 1)
+
+[node name="AnimationPlayer" parent="Player Model" index="1"]
+speed_scale = 1.5
+
 [connection signal="area_entered" from="Interact Zone" to="." method="_on_interact_zone_area_entered"]
 [connection signal="area_exited" from="Interact Zone" to="." method="_on_interact_zone_area_exited"]
+
+[editable path="Player Model"]

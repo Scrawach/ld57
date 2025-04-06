@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6cthiya7h8jg"]
+[gd_scene load_steps=11 format=3 uid="uid://6cthiya7h8jg"]
 
 [ext_resource type="Script" path="res://living_lift/living_lift.gd" id="1_p8bgj"]
 [ext_resource type="Resource" uid="uid://bxcg8onw2rbii" path="res://living_lift/lift_resource.tres" id="2_cjspu"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://living_lift/doors.gd" id="5_wkjn2"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_688nc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jywix"]
+size = Vector3(1, 1, 0.0160828)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c5uqo"]
 
@@ -22,6 +25,12 @@ config = ExtResource("2_cjspu")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, 5, 0, -5, -2.18557e-07, 0, 0, 3)
 mesh = SubResource("QuadMesh_688nc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00688171)
+shape = SubResource("BoxShape3D_jywix")
 
 [node name="Dialogue Panel" parent="." instance=ExtResource("3_uugx3")]
 unique_name_in_owner = true
