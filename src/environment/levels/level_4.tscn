@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds1d8tyjx68w1"]
+[gd_scene load_steps=12 format=3 uid="uid://ds1d8tyjx68w1"]
 
 [ext_resource type="Script" path="res://environment/levels/level.gd" id="1_vplpu"]
 [ext_resource type="PackedScene" uid="uid://ddg3xa2ofdwwp" path="res://environment/props/water.tscn" id="2_50m63"]
 [ext_resource type="PackedScene" uid="uid://hi13qt5n7hme" path="res://environment/props/plant_2.tscn" id="3_wf03p"]
 [ext_resource type="PackedScene" uid="uid://c7ri3pdtngeob" path="res://environment/props/chair.tscn" id="4_cwn8r"]
+[ext_resource type="PackedScene" uid="uid://bjsl4ysg5cjw6" path="res://items/bomb/bomb_item.tscn" id="5_0hlp1"]
 [ext_resource type="PackedScene" uid="uid://cdvem2cqra21t" path="res://environment/rooms/wall_angle.tscn" id="5_knspp"]
 [ext_resource type="PackedScene" uid="uid://gh2a8q2widgc" path="res://environment/rooms/wall_output.tscn" id="6_1d54f"]
+[ext_resource type="PackedScene" uid="uid://n6aggx5jnrl2" path="res://items/meal/meal_item.tscn" id="6_qrike"]
 [ext_resource type="PackedScene" uid="uid://qdid32l4kts5" path="res://environment/rooms/wall_inner_angle.tscn" id="7_skvb6"]
 [ext_resource type="PackedScene" uid="uid://c27ow5qa22t3r" path="res://environment/rooms/wall_door.tscn" id="8_lohd0"]
 
@@ -21,7 +23,7 @@ script = ExtResource("1_vplpu")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5422, 0.141531, -17.2478)
 
 [node name="Plant7" parent="Props" instance=ExtResource("3_wf03p")]
-transform = Transform3D(0.916963, 0, -0.398973, 0, 1, 0, 0.398973, 0, 0.916963, 16.2045, 0.627948, -12.4029)
+transform = Transform3D(0.916963, 0, -0.398973, 0, 1, 0, 0.398973, 0, 0.916963, 16.2019, 0.16708, -12.4043)
 
 [node name="Plant8" parent="Props" instance=ExtResource("3_wf03p")]
 transform = Transform3D(0.16029, 0.000364608, 0.98707, -0.00453793, 0.99999, 0.000367531, -0.98706, -0.00453816, 0.16029, 8.73357, 0.627948, -12.4029)
@@ -55,6 +57,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -9.29344)
 
 [node name="Chair17" parent="Props" instance=ExtResource("4_cwn8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6787, 0.115141, -11.1039)
+
+[node name="Bomb Item" parent="Props" instance=ExtResource("5_0hlp1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.54692, 0.403488, -22.7805)
+
+[node name="Bomb Item2" parent="Props" instance=ExtResource("5_0hlp1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.54692, 0.403488, -24.5749)
+
+[node name="Meal Item" parent="Props" instance=ExtResource("6_qrike")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1243, 0.407767, -22.9757)
+
+[node name="Meal Item2" parent="Props" instance=ExtResource("6_qrike")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1243, 0.407767, -24.9489)
 
 [node name="Walls" type="Node3D" parent="."]
 
