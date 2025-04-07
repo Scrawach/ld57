@@ -40,6 +40,9 @@ func _on_want_next_level() -> void:
 func _on_lift_dead() -> void:
 	var last_level_index: int = levels.get_child_count() - 1
 	move_to_level(last_level_index)
+	
+	for index in (levels.get_child_count() - 1):
+		levels.get_child(index).disable_dead_zone()
 
 func move_to_level(level_index: int) -> void:
 	living_lift.eat_zone.disable()
