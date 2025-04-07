@@ -4,7 +4,7 @@ extends Node3D
 @onready var elevator_position := %"Elevator Position"
 @onready var dead_zone: Area3D = $DeadZone
 
-var offset: Vector3 = Vector3(0, 250, 0)
+var offset: Vector3 = Vector3(0, 50, 0)
 
 func get_lift_position() -> Vector3:
 	return elevator_position.global_position
