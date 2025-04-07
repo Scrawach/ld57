@@ -21,10 +21,10 @@ script = ExtResource("1_tepbp")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.5422, 0.141531, -17.2478)
 
 [node name="Plant7" parent="Props" instance=ExtResource("5_q0ep8")]
-transform = Transform3D(0.916963, 0, -0.398973, 0, 1, 0, 0.398973, 0, 0.916963, 16.2045, 0.627948, -12.4029)
+transform = Transform3D(0.916963, 0, -0.398973, 0, 1, 0, 0.398973, 0, 0.916963, 16.2045, 0.128966, -12.4029)
 
 [node name="Plant8" parent="Props" instance=ExtResource("5_q0ep8")]
-transform = Transform3D(0.16029, 0.000364608, 0.98707, -0.00453793, 0.99999, 0.000367531, -0.98706, -0.00453816, 0.16029, 8.73357, 0.627948, -12.4029)
+transform = Transform3D(0.16029, 0.000364608, 0.98707, -0.00453793, 0.99999, 0.000367531, -0.98706, -0.00453816, 0.16029, 8.73357, 0.128966, -12.4029)
 
 [node name="Chair8" parent="Props" instance=ExtResource("2_1xjt3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13353, 0.115141, -4.00611)

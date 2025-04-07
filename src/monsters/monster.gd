@@ -64,7 +64,7 @@ func _process_attack() -> void:
 	pass
 
 func _process_chase(delta: float) -> void:	
-	set_target_position(player.position)
+	set_target_position(player.global_position)
 	_process_movement(delta)
 	
 	if position.distance_to(player.position) < ATTACK_RANGE:
@@ -95,9 +95,9 @@ func _process_movement(delta: float) -> void:
 	global_position = global_position.move_toward(next_position, delta * speed)
 
 	offset.y = 0
-	
-	if not offset.is_zero_approx():
-		look_at(global_position + offset, Vector3.UP)
+	var look_at_pos = global_position + offset
+	if not offset.is_zero_approx() and look_at_pos != self.global_position and look_at_pos != self.position:
+		look_at(look_at_pos, Vector3.UP)
 	
 	if animation.current_animation != WALK_ANIMATION:
 		animation.play(WALK_ANIMATION, 0.1)
@@ -124,6 +124,7 @@ func set_target_position(target_position: Vector3) -> void:
 
 func _on_attack_zone_body_entered(body: Node3D) -> void:
 	animation.play(ATTACK_ANIMATION, 0.1)
+	#_switch_to(State.Attack)
 	if body is Player:
 		var target = body as Player
 		target.take_damage()
