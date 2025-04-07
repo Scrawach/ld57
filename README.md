@@ -7,4 +7,8 @@
 
 A game in 48 hours (COMPO) for Ludum Dare 57. It's a 3d platformer with a slightly odd story about a mid-level employee.
 
-[Ludum Dare Submission](https://ldjam.com/events/ludum-dare/57/living-lift)
+[Submission](https://ldjam.com/events/ludum-dare/57/living-lift)
+
+# Gameplay
+
+[gameplay.webm](https://github.com/user-attachments/assets/dd2c2398-5922-4cb4-bf71-51f45b98a8a5)
