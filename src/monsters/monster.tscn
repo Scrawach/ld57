@@ -1,34 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu1sy3dij4mv2"]
+[gd_scene load_steps=4 format=3 uid="uid://cu1sy3dij4mv2"]
 
 [ext_resource type="Script" path="res://monsters/monster.gd" id="1_khyp3"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_dddh6"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_t25nv"]
+[ext_resource type="PackedScene" uid="uid://db6t6vrkmmh3q" path="res://monsters/slime/models/slime.glb" id="2_mcj4r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dyumk"]
-radius = 3.0
 
 [node name="Monster" type="Node3D"]
 script = ExtResource("1_khyp3")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_dddh6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(-2.18557e-08, 0, -0.6, 0, 0.3, 0, 0.5, 0, -2.62268e-08, 0.0433874, 0.448601, -0.351676)
-mesh = SubResource("BoxMesh_t25nv")
-
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("SphereShape3D_dyumk")
+
+[node name="Attack Zone" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Zone"]
 shape = SubResource("SphereShape3D_dyumk")
 
 [node name="Chase Timer" type="Timer" parent="."]
@@ -37,5 +30,11 @@ one_shot = true
 [node name="Awaiting Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="slime" parent="." instance=ExtResource("2_mcj4r")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.386899, 0)
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Attack Zone" to="." method="_on_attack_zone_body_entered"]
+
+[editable path="slime"]

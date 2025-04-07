@@ -2,11 +2,15 @@ class_name Monster
 extends Node3D
 
 const ATTACK_RANGE: float = 0.5
+const IDLE_ANIMATION: String = "Idle"
+const WALK_ANIMATION: String = "Moving"
+const ATTACK_ANIMATION: String = "Attack2"
 
 enum State {
 	Idle,
 	Chasing,
-	Patrol
+	Patrol,
+	Attack
 }
 
 @export var speed := 2
@@ -18,6 +22,7 @@ enum State {
 @onready var nav_agent := $NavigationAgent3D as NavigationAgent3D
 @onready var chase_timer := $"Chase Timer" as Timer
 @onready var awaiting_timer := $"Awaiting Timer" as Timer
+@onready var animation: AnimationPlayer = $slime/AnimationPlayer
  
 var point_index: int = 0
 
@@ -31,10 +36,22 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	match state:
+		State.Idle:
+			if animation.current_animation != IDLE_ANIMATION:
+				animation.play(IDLE_ANIMATION, 0.1)
+				
+		State.Attack:
+			
+			if animation.current_animation != ATTACK_ANIMATION:
+				animation.play(ATTACK_ANIMATION, 0.1)
+			
 		State.Chasing:
 			_process_chase(delta)
 		State.Patrol:
 			_process_patrol(delta)
+
+func _on_attack_done() -> void:
+	_switch_to(State.Idle)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	player = body
@@ -51,7 +68,11 @@ func _process_chase(delta: float) -> void:
 	_process_movement(delta)
 	
 	if position.distance_to(player.position) < ATTACK_RANGE:
-		print("ATTACK!")
+		_switch_to(State.Attack)
+		
+		if player is Player:
+			var target = player as Player
+			target.take_damage()
 
 func _on_chase_timeout() -> void:
 	_switch_to(State.Idle)
@@ -74,8 +95,12 @@ func _process_movement(delta: float) -> void:
 	global_position = global_position.move_toward(next_position, delta * speed)
 
 	offset.y = 0
+	
 	if not offset.is_zero_approx():
 		look_at(global_position + offset, Vector3.UP)
+	
+	if animation.current_animation != WALK_ANIMATION:
+		animation.play(WALK_ANIMATION, 0.1)
 
 func _switch_to(new_state: State) -> void:
 	state = new_state
@@ -95,3 +120,10 @@ func select_next_point() -> void:
 
 func set_target_position(target_position: Vector3) -> void:
 	nav_agent.set_target_position(target_position)
+
+
+func _on_attack_zone_body_entered(body: Node3D) -> void:
+	animation.play(ATTACK_ANIMATION, 0.1)
+	if body is Player:
+		var target = body as Player
+		target.take_damage()

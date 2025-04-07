@@ -100,6 +100,14 @@ func _handle_gravity(delta: float) -> void:
 	if gravity > 0 and is_on_floor():
 		gravity = 0
 
+func take_damage() -> void:
+	if not is_on_floor():
+		return
+	
+	_play_start_jump_sound()
+	gravity = -jump_strength * 2
+	model.scale = Vector3(0.5, 1.4, 0.5)
+
 func jump():
 	_play_start_jump_sound()
 	gravity = -jump_strength
